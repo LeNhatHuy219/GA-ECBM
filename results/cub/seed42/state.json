@@ -1,0 +1,25 @@
+{
+  "versions": {
+    "python": "3.13.16",
+    "torch": "2.11.0+cu130",
+    "torchvision": "0.26.0+cu130",
+    "numpy": "2.1.3",
+    "scikit-learn": "1.6.1",
+    "pytorch-lightning": "1.6.4",
+    "torchmetrics": "0.9.3"
+  },
+  "bench": {
+    "ok": true,
+    "precision": 16,
+    "sec_per_step": 1.482365036010742,
+    "peak_gb": 7.845855712890625,
+    "batch": 64,
+    "accumulate": 1
+  },
+  "train_overrides": {
+    "precision": 16
+  },
+  "train_dir": "/kaggle/input/notebooks/ehehee/ga-ecbm-cub/ECBM/exp/2026-11-12_06-21-17",
+  "resumed_from": "/kaggle/input/notebooks/ehehee/ga-ecbm-cub/ECBM/exp/2026-11-12_06-21-17/last.ckpt",
+  "train_hours": 0.0
+}

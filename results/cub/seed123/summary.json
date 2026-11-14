@@ -1,0 +1,542 @@
+{
+  "goal": "GA-ECBM (Gated Additive ECBM) end-to-end trên CUB, cùng code và công thức train với bản tái lập ECBM gốc",
+  "code": {
+    "repo": "https://github.com/xmed-lab/ECBM.git",
+    "commit": "d38c43aeb22a44465aa5344af5a3b7bad72211ae",
+    "patches_and_new_files": "patches.diff"
+  },
+  "epochs": 100,
+  "seeds": 1,
+  "seed": 123,
+  "gate_init": -3.1,
+  "train_overrides": {
+    "precision": 16
+  },
+  "resumed_from": "/kaggle/input/notebooks/khnhdngtrnquc/ga-ecbm-cub-seed123/ECBM/exp/2026-11-13_11-38-11/last.ckpt",
+  "checkpoint": "/kaggle/input/notebooks/khnhdngtrnquc/ga-ecbm-cub-seed123/ECBM/exp/2026-11-13_11-38-11/last.ckpt",
+  "author_checkpoint": "/kaggle/input/notebooks/ntkngulu/ecbm-cub-seed123/ECBM/exp/2026-11-13_09-58-50/last.ckpt",
+  "results": {
+    "gate": [
+      1.0,
+      0.9510859251022339,
+      0.9070354700088501,
+      0.8675199151039124,
+      0.8310446739196777,
+      0.7971447110176086,
+      0.7655519247055054,
+      0.7357593178749084,
+      0.7075403928756714,
+      0.6806455850601196,
+      0.6549616456031799,
+      0.6302935481071472,
+      0.606558620929718,
+      0.5837099552154541,
+      0.5616672039031982,
+      0.5403156280517578,
+      0.5195709466934204,
+      0.49939313530921936,
+      0.4797583818435669,
+      0.4606802761554718,
+      0.4421161711215973,
+      0.4240613877773285,
+      0.40643632411956787,
+      0.3892589509487152,
+      0.3725476861000061,
+      0.356295108795166,
+      0.3404906988143921,
+      0.32514137029647827,
+      0.31024226546287537
+    ],
+    "D_val": {
+      "unintervened": {
+        "class_accuracy": 0.7362270355224609,
+        "concept_accuracy": 0.9631528854370117,
+        "overall_concept_accuracy": 0.6419031620025635
+      },
+      "curve": [
+        {
+          "ratio": 0.0,
+          "class_accuracy": 0.7362270355224609,
+          "concept_accuracy": 0.9631528854370117,
+          "overall_concept_accuracy": 0.6419031620025635,
+          "harm_rate": 0.0,
+          "help_rate": 0.0
+        },
+        {
+          "ratio": 0.1,
+          "class_accuracy": 0.7572620987892151,
+          "concept_accuracy": 0.9680196166038513,
+          "overall_concept_accuracy": 0.649081802368164,
+          "unverified_concept_accuracy": 0.9642397999763489,
+          "harm_rate": 0.0,
+          "help_rate": 0.021035058237612248
+        },
+        {
+          "ratio": 0.2,
+          "class_accuracy": 0.77529217004776,
+          "concept_accuracy": 0.9719398498535157,
+          "overall_concept_accuracy": 0.6537562608718872,
+          "unverified_concept_accuracy": 0.9647040486335754,
+          "harm_rate": 0.0001669449033215642,
+          "help_rate": 0.039232052862644196
+        },
+        {
+          "ratio": 0.3,
+          "class_accuracy": 0.795158588886261,
+          "concept_accuracy": 0.9749210000038147,
+          "overall_concept_accuracy": 0.659098482131958,
+          "unverified_concept_accuracy": 0.9650045275688172,
+          "harm_rate": 0.0,
+          "help_rate": 0.058931552618741986
+        },
+        {
+          "ratio": 0.4,
+          "class_accuracy": 0.8313856363296509,
+          "concept_accuracy": 0.9787607431411743,
+          "overall_concept_accuracy": 0.6664440751075744,
+          "unverified_concept_accuracy": 0.9661404252052307,
+          "harm_rate": 0.0006677796132862568,
+          "help_rate": 0.09582637697458267
+        },
+        {
+          "ratio": 0.5,
+          "class_accuracy": 0.8856427431106567,
+          "concept_accuracy": 0.9840388774871827,
+          "overall_concept_accuracy": 0.6891485810279846,
+          "unverified_concept_accuracy": 0.9692716240882874,
+          "harm_rate": 0.0003338898066431284,
+          "help_rate": 0.1497495800256729
+        },
+        {
+          "ratio": 0.6,
+          "class_accuracy": 0.9141903162002564,
+          "concept_accuracy": 0.9869261264801026,
+          "overall_concept_accuracy": 0.6899832963943482,
+          "unverified_concept_accuracy": 0.9666583657264709,
+          "harm_rate": 0.0003338898066431284,
+          "help_rate": 0.17829716503620147
+        },
+        {
+          "ratio": 0.7,
+          "class_accuracy": 0.9510851383209229,
+          "concept_accuracy": 0.9908791422843933,
+          "overall_concept_accuracy": 0.7156928062438965,
+          "unverified_concept_accuracy": 0.9696686148643494,
+          "harm_rate": 0.0003338898066431284,
+          "help_rate": 0.21519198417663574
+        },
+        {
+          "ratio": 0.8,
+          "class_accuracy": 0.9686143517494201,
+          "concept_accuracy": 0.9934280395507813,
+          "overall_concept_accuracy": 0.732888150215149,
+          "unverified_concept_accuracy": 0.9662237882614135,
+          "harm_rate": 0.0001669449033215642,
+          "help_rate": 0.23255425989627837
+        },
+        {
+          "ratio": 0.9,
+          "class_accuracy": 0.98697829246521,
+          "concept_accuracy": 0.996808671951294,
+          "overall_concept_accuracy": 0.8070116996765136,
+          "unverified_concept_accuracy": 0.9712656021118165,
+          "harm_rate": 0.0001669449033215642,
+          "help_rate": 0.2509181946516037
+        },
+        {
+          "ratio": 1.0,
+          "class_accuracy": 0.9966611266136169,
+          "concept_accuracy": 1.0,
+          "overall_concept_accuracy": 1.0,
+          "harm_rate": 0.0,
+          "help_rate": 0.2604340612888336
+        }
+      ],
+      "intervention_auc": 0.8732053416967392,
+      "inference_steps": null,
+      "seconds": 0.6491210460662842,
+      "direct_energy": {
+        "class_accuracy": 0.731218695640564,
+        "concept_accuracy": 0.9623479843139648
+      }
+    },
+    "D_test": {
+      "unintervened": {
+        "class_accuracy": 0.7628581523895264,
+        "concept_accuracy": 0.965125560760498,
+        "overall_concept_accuracy": 0.6549879312515259
+      },
+      "curve": [
+        {
+          "ratio": 0.0,
+          "class_accuracy": 0.7628581523895264,
+          "concept_accuracy": 0.965125560760498,
+          "overall_concept_accuracy": 0.6549879312515259,
+          "harm_rate": 0.0,
+          "help_rate": 0.0
+        },
+        {
+          "ratio": 0.1,
+          "class_accuracy": 0.7801518917083741,
+          "concept_accuracy": 0.9696727514266967,
+          "overall_concept_accuracy": 0.6605799078941346,
+          "unverified_concept_accuracy": 0.9660938501358032,
+          "harm_rate": 0.0004832585313124582,
+          "help_rate": 0.0177770109847188
+        },
+        {
+          "ratio": 0.2,
+          "class_accuracy": 0.796410071849823,
+          "concept_accuracy": 0.973218297958374,
+          "overall_concept_accuracy": 0.6650673031806946,
+          "unverified_concept_accuracy": 0.9663280844688416,
+          "harm_rate": 0.0012081463588401674,
+          "help_rate": 0.03476009704172611
+        },
+        {
+          "ratio": 0.3,
+          "class_accuracy": 0.8163617491722107,
+          "concept_accuracy": 0.9761498928070068,
+          "overall_concept_accuracy": 0.6712116003036499,
+          "unverified_concept_accuracy": 0.9667165160179139,
+          "harm_rate": 0.0007594062801217661,
+          "help_rate": 0.05426303148269653
+        },
+        {
+          "ratio": 0.4,
+          "class_accuracy": 0.846392822265625,
+          "concept_accuracy": 0.9799000859260559,
+          "overall_concept_accuracy": 0.6782533764839173,
+          "unverified_concept_accuracy": 0.9679570198059082,
+          "harm_rate": 0.000621332396985963,
+          "help_rate": 0.08415602445602417
+        },
+        {
+          "ratio": 0.5,
+          "class_accuracy": 0.8935450434684753,
+          "concept_accuracy": 0.9847382187843323,
+          "overall_concept_accuracy": 0.6996202945709229,
+          "unverified_concept_accuracy": 0.9706329107284546,
+          "harm_rate": 0.0003451846627285704,
+          "help_rate": 0.13103210031986237
+        },
+        {
+          "ratio": 0.6,
+          "class_accuracy": 0.9229202628135681,
+          "concept_accuracy": 0.9876171112060547,
+          "overall_concept_accuracy": 0.7045564532279969,
+          "unverified_concept_accuracy": 0.9684540748596191,
+          "harm_rate": 0.00027614773716777563,
+          "help_rate": 0.16033827960491182
+        },
+        {
+          "ratio": 0.7,
+          "class_accuracy": 0.9554021477699279,
+          "concept_accuracy": 0.9911863803863525,
+          "overall_concept_accuracy": 0.7260959386825562,
+          "unverified_concept_accuracy": 0.970738410949707,
+          "harm_rate": 0.00027614773134700956,
+          "help_rate": 0.19282015562057495
+        },
+        {
+          "ratio": 0.8,
+          "class_accuracy": 0.9746979713439942,
+          "concept_accuracy": 0.9939765334129333,
+          "overall_concept_accuracy": 0.7502588868141175,
+          "unverified_concept_accuracy": 0.9692306160926819,
+          "harm_rate": 0.0002071107999654487,
+          "help_rate": 0.21204694509506225
+        },
+        {
+          "ratio": 0.9,
+          "class_accuracy": 0.9908180832862854,
+          "concept_accuracy": 0.996925687789917,
+          "overall_concept_accuracy": 0.8128408551216125,
+          "unverified_concept_accuracy": 0.9723218083381653,
+          "harm_rate": 0.00010355539852753281,
+          "help_rate": 0.22806351482868195
+        },
+        {
+          "ratio": 1.0,
+          "class_accuracy": 0.9987918734550476,
+          "concept_accuracy": 1.0,
+          "overall_concept_accuracy": 1.0,
+          "harm_rate": 0.0,
+          "help_rate": 0.23593372106552124
+        }
+      ],
+      "intervention_auc": 0.885752505660057,
+      "inference_steps": null,
+      "seconds": 3.0774292945861816,
+      "direct_energy": {
+        "class_accuracy": 0.7549188733100891,
+        "concept_accuracy": 0.9636215567588806
+      }
+    },
+    "A0_val": {
+      "unintervened": {
+        "class_accuracy": 0.7170283794403076,
+        "concept_accuracy": 0.9579731225967407,
+        "overall_concept_accuracy": 0.5609349012374878
+      },
+      "curve": [
+        {
+          "ratio": 0.0,
+          "class_accuracy": 0.7170283794403076,
+          "concept_accuracy": 0.9579731225967407,
+          "overall_concept_accuracy": 0.5609349012374878,
+          "harm_rate": 0.0,
+          "help_rate": 0.0
+        },
+        {
+          "ratio": 0.1,
+          "class_accuracy": 0.6889816403388977,
+          "concept_accuracy": 0.962647557258606,
+          "overall_concept_accuracy": 0.5679465651512146,
+          "unverified_concept_accuracy": 0.9582364439964295,
+          "harm_rate": 0.060601002722978595,
+          "help_rate": 0.03255425654351711
+        },
+        {
+          "ratio": 0.2,
+          "class_accuracy": 0.7090150356292725,
+          "concept_accuracy": 0.9666035652160645,
+          "overall_concept_accuracy": 0.5716193556785584,
+          "unverified_concept_accuracy": 0.957994544506073,
+          "harm_rate": 0.0534223698079586,
+          "help_rate": 0.04540901407599449
+        },
+        {
+          "ratio": 0.3,
+          "class_accuracy": 0.7347245216369629,
+          "concept_accuracy": 0.9694788932800293,
+          "overall_concept_accuracy": 0.5729549169540405,
+          "unverified_concept_accuracy": 0.9573890209197998,
+          "harm_rate": 0.04440734460949898,
+          "help_rate": 0.06210350468754768
+        },
+        {
+          "ratio": 0.4,
+          "class_accuracy": 0.7736227154731751,
+          "concept_accuracy": 0.9733439564704895,
+          "overall_concept_accuracy": 0.5844741344451905,
+          "unverified_concept_accuracy": 0.9574789047241211,
+          "harm_rate": 0.03405676074326038,
+          "help_rate": 0.09065108448266983
+        },
+        {
+          "ratio": 0.5,
+          "class_accuracy": 0.8454090118408203,
+          "concept_accuracy": 0.979160213470459,
+          "overall_concept_accuracy": 0.6113522410392761,
+          "unverified_concept_accuracy": 0.9598923325538635,
+          "harm_rate": 0.02353923171758652,
+          "help_rate": 0.15191986560821533
+        },
+        {
+          "ratio": 0.6,
+          "class_accuracy": 0.8761268854141235,
+          "concept_accuracy": 0.9826511383056641,
+          "overall_concept_accuracy": 0.6105175256729126,
+          "unverified_concept_accuracy": 0.9557504415512085,
+          "harm_rate": 0.018864774703979494,
+          "help_rate": 0.17796327471733092
+        },
+        {
+          "ratio": 0.7,
+          "class_accuracy": 0.9222036719322204,
+          "concept_accuracy": 0.9872764110565185,
+          "overall_concept_accuracy": 0.6342237114906311,
+          "unverified_concept_accuracy": 0.9575918674468994,
+          "harm_rate": 0.014691151678562164,
+          "help_rate": 0.21986644268035888
+        },
+        {
+          "ratio": 0.8,
+          "class_accuracy": 0.9422370672225953,
+          "concept_accuracy": 0.9910356402397156,
+          "overall_concept_accuracy": 0.657429039478302,
+          "unverified_concept_accuracy": 0.9540531635284424,
+          "harm_rate": 0.01151919849216938,
+          "help_rate": 0.23672788143157958
+        },
+        {
+          "ratio": 0.9,
+          "class_accuracy": 0.9634390830993652,
+          "concept_accuracy": 0.9954015612602234,
+          "overall_concept_accuracy": 0.7335559129714966,
+          "unverified_concept_accuracy": 0.9586365103721619,
+          "harm_rate": 0.010183639451861381,
+          "help_rate": 0.256594318151474
+        },
+        {
+          "ratio": 1.0,
+          "class_accuracy": 0.9757930040359497,
+          "concept_accuracy": 1.0,
+          "overall_concept_accuracy": 1.0,
+          "harm_rate": 0.00834724586457014,
+          "help_rate": 0.2671118676662445
+        }
+      ],
+      "intervention_auc": 0.8302170324325561,
+      "inference_steps": {
+        "min": 36,
+        "max": 42,
+        "mean": 37.05263157894737
+      },
+      "seconds": 1765.6392891407013
+    },
+    "A0_test": {
+      "unintervened": {
+        "class_accuracy": 0.7440455555915833,
+        "concept_accuracy": 0.960766077041626,
+        "overall_concept_accuracy": 0.584225058555603
+      },
+      "curve": [
+        {
+          "ratio": 0.0,
+          "class_accuracy": 0.7440455555915833,
+          "concept_accuracy": 0.960766077041626,
+          "overall_concept_accuracy": 0.584225058555603,
+          "harm_rate": 0.0,
+          "help_rate": 0.0
+        },
+        {
+          "ratio": 0.1,
+          "class_accuracy": 0.7139109611511231,
+          "concept_accuracy": 0.9650697827339172,
+          "overall_concept_accuracy": 0.5900586724281311,
+          "unverified_concept_accuracy": 0.9609426856040955,
+          "harm_rate": 0.06002761498093605,
+          "help_rate": 0.029892992600798605
+        },
+        {
+          "ratio": 0.2,
+          "class_accuracy": 0.731066620349884,
+          "concept_accuracy": 0.9686085343360901,
+          "overall_concept_accuracy": 0.5934760093688964,
+          "unverified_concept_accuracy": 0.9605255365371704,
+          "harm_rate": 0.05246807038784027,
+          "help_rate": 0.0394891269505024
+        },
+        {
+          "ratio": 0.3,
+          "class_accuracy": 0.7527096986770629,
+          "concept_accuracy": 0.971390962600708,
+          "overall_concept_accuracy": 0.598205029964447,
+          "unverified_concept_accuracy": 0.9600624680519104,
+          "harm_rate": 0.04556437656283378,
+          "help_rate": 0.05422851219773293
+        },
+        {
+          "ratio": 0.4,
+          "class_accuracy": 0.7919571876525879,
+          "concept_accuracy": 0.9752114295959473,
+          "overall_concept_accuracy": 0.6092164397239686,
+          "unverified_concept_accuracy": 0.9604605674743653,
+          "harm_rate": 0.03458750396966934,
+          "help_rate": 0.0824991375207901
+        },
+        {
+          "ratio": 0.5,
+          "class_accuracy": 0.8553676247596741,
+          "concept_accuracy": 0.980398440361023,
+          "overall_concept_accuracy": 0.6264411568641662,
+          "unverified_concept_accuracy": 0.9622688055038452,
+          "harm_rate": 0.024024853482842445,
+          "help_rate": 0.1353469118475914
+        },
+        {
+          "ratio": 0.6,
+          "class_accuracy": 0.8893337965011596,
+          "concept_accuracy": 0.9837257742881775,
+          "overall_concept_accuracy": 0.6304798126220703,
+          "unverified_concept_accuracy": 0.9585224747657776,
+          "harm_rate": 0.017466344684362412,
+          "help_rate": 0.16275457441806793
+        },
+        {
+          "ratio": 0.7,
+          "class_accuracy": 0.9299620270729065,
+          "concept_accuracy": 0.988049840927124,
+          "overall_concept_accuracy": 0.6515705823898316,
+          "unverified_concept_accuracy": 0.9602678656578064,
+          "harm_rate": 0.012840869929641485,
+          "help_rate": 0.19875733256340028
+        },
+        {
+          "ratio": 0.8,
+          "class_accuracy": 0.9534345865249634,
+          "concept_accuracy": 0.991601538658142,
+          "overall_concept_accuracy": 0.6746634483337403,
+          "unverified_concept_accuracy": 0.9570270657539368,
+          "harm_rate": 0.008077321387827397,
+          "help_rate": 0.21746634542942048
+        },
+        {
+          "ratio": 0.9,
+          "class_accuracy": 0.9737659573554993,
+          "concept_accuracy": 0.9957622408866882,
+          "overall_concept_accuracy": 0.7506731152534485,
+          "unverified_concept_accuracy": 0.9618421792984009,
+          "harm_rate": 0.005005177669227123,
+          "help_rate": 0.23472558259963988
+        },
+        {
+          "ratio": 1.0,
+          "class_accuracy": 0.9887815117835999,
+          "concept_accuracy": 1.0,
+          "overall_concept_accuracy": 1.0,
+          "harm_rate": 0.002588885137811303,
+          "help_rate": 0.24732482433319092
+        }
+      ],
+      "intervention_auc": 0.8457921993732453,
+      "inference_steps": {
+        "min": 34,
+        "max": 44,
+        "mean": 38.05494505494506
+      },
+      "seconds": 8772.76409292221
+    }
+  },
+  "verdict_val": "ĐẠT (1 seed)",
+  "criteria": {
+    "auc_gain": 0.02,
+    "max_class_drop": 0.005,
+    "max_concept_drop": 0.002,
+    "max_overall_concept_drop": 0.01
+  },
+  "test_evaluated": true,
+  "paper_ecbm_test": {
+    "concept_accuracy": 0.973,
+    "overall_concept_accuracy": 0.713,
+    "class_accuracy": 0.812
+  },
+  "reproduced_ecbm_test": {
+    "concept_accuracy": 0.955,
+    "overall_concept_accuracy": 0.543,
+    "class_accuracy": 0.711
+  },
+  "time": {
+    "train_hours": 0.0,
+    "notebook_hours": 3.0790706335835987
+  },
+  "versions": {
+    "python": "3.13.16",
+    "torch": "2.11.0+cu130",
+    "torchvision": "0.26.0+cu130",
+    "numpy": "2.1.3",
+    "scikit-learn": "1.6.1",
+    "pytorch-lightning": "1.6.4",
+    "torchmetrics": "0.9.3"
+  },
+  "benchmark": {
+    "ok": true,
+    "precision": 16,
+    "sec_per_step": 1.5136247634887696,
+    "peak_gb": 7.845855712890625,
+    "batch": 64,
+    "accumulate": 1
+  }
+}

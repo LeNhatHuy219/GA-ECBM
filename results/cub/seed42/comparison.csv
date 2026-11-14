@@ -1,0 +1,5 @@
+Mô hình,Tập,Class acc,Concept acc,Overall concept acc,AUC can thiệp,Class acc khi xác minh 50% nhóm,Gây hại TB
+ECBM gốc (tái lập),val,0.7145,0.9548,0.5442,0.8307,0.8447,0.0273
+ECBM gốc (tái lập),test,0.7111,0.9549,0.543,0.8282,0.8423,0.0305
+GA-ECBM,val,0.7379,0.9625,0.6269,0.8744,0.8871,0.0
+GA-ECBM,test,0.7563,0.9642,0.6434,0.883,0.8928,0.0002

@@ -1,0 +1,11 @@
+# Derm7pt labels re-attached locally (dataset licence: CC BY-NC-ND 4.0, no redistribution)
+results/derm7pt/with_labels/
+# datasets, checkpoints and caches (do not use a "Derm7pt/" pattern: case-insensitive file systems would also ignore derm7pt/)
+release_v0/
+CUB_200_2011/
+*.pth
+*.ckpt
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store

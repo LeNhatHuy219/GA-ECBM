@@ -1,0 +1,63 @@
+{
+  "goal": "Tái lập ECBM (Xu et al., ICLR 2024) trên CUB bằng code chính thức",
+  "code": {
+    "repo": "https://github.com/xmed-lab/ECBM.git",
+    "commit": "d38c43aeb22a44465aa5344af5a3b7bad72211ae",
+    "patches": "patches.diff",
+    "launcher": "compat_run.py (thêm np.Inf, np.NaN cho NumPy 2)"
+  },
+  "differences_from_paper": {
+    "epochs": 100,
+    "seeds": 1,
+    "config_overrides": {
+      "precision": 16
+    }
+  },
+  "gradient_inference_test": {
+    "concept_accuracy": 0.9548717279519353,
+    "overall_concept_accuracy": 0.5429754918881602,
+    "class_accuracy": 0.7110804319381714
+  },
+  "main_py_direct_test": {
+    "accuracy_test_c": 0.9169979095458984,
+    "accuracy_test_c_overall": 0.4300561547279358,
+    "accuracy_test_y_xy": 0.7140231132507324,
+    "accuracy_test_y_cy": 0.9500041007995605
+  },
+  "paper": {
+    "concept_accuracy": {
+      "mean": 0.973,
+      "std": 0.001
+    },
+    "overall_concept_accuracy": {
+      "mean": 0.713,
+      "std": 0.009
+    },
+    "class_accuracy": {
+      "mean": 0.812,
+      "std": 0.006
+    }
+  },
+  "time": {
+    "train_hours": 4.25145380212201,
+    "inference_minutes": 59.75077445109685,
+    "notebook_hours": 5.322904839052095
+  },
+  "versions": {
+    "python": "3.13.16",
+    "torch": "2.11.0+cu130",
+    "torchvision": "0.26.0+cu130",
+    "numpy": "2.1.3",
+    "scikit-learn": "1.6.1",
+    "pytorch-lightning": "1.6.4",
+    "torchmetrics": "0.9.3"
+  },
+  "benchmark": {
+    "ok": true,
+    "precision": 16,
+    "sec_per_step": 1.671504521369934,
+    "peak_gb": 8.226274013519287,
+    "batch": 64,
+    "accumulate": 1
+  }
+}

@@ -1,0 +1,459 @@
+[{"stream_name":"stderr","time":10.598447326,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":10.598514145,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":10.598521203,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":10.598524713,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":11.287574854,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":11.287606641,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":11.287622605,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":11.287626452,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":12.671709656,"data":"Kết quả sẽ lưu ở /kaggle/working/ga_ecbm_cub_results\n"}
+,{"stream_name":"stdout","time":24.035292768,"data":"Python 3.13.16 | torch 2.11.0+cu130 (CUDA 13.0) | numpy 2.1.3\n"}
+,{"stream_name":"stdout","time":24.035327623,"data":"GPU 0: Tesla T4 (sm_75), 14.6 GB\n"}
+,{"stream_name":"stdout","time":24.035332149,"data":"GPU 1: Tesla T4 (sm_75), 14.6 GB\n"}
+,{"stream_name":"stdout","time":24.035335367,"data":"PyTorch này hỗ trợ: ['sm_75', 'sm_80', 'sm_86', 'sm_90', 'sm_100', 'sm_120']\n"}
+,{"stream_name":"stdout","time":24.255261608,"data":"Lưu ý: main.py của tác giả chỉ dùng GPU 0, GPU còn lại sẽ để trống.\n"}
+,{"stream_name":"stdout","time":24.255301628,"data":"Ổ đĩa /kaggle/working: còn trống 20 GB\n"}
+,{"stream_name":"stdout","time":24.4550847,"data":"$ git clone --quiet https://github.com/xmed-lab/ECBM.git /kaggle/working/ECBM\n"}
+,{"stream_name":"stdout","time":25.777055217,"data":"$ git -C /kaggle/working/ECBM checkout --quiet --force d38c43aeb22a44465aa5344af5a3b7bad72211ae\n"}
+,{"stream_name":"stdout","time":25.777097995,"data":"$ git -C /kaggle/working/ECBM log -1 --format=commit %H%nngày   %ad%n%s\n"}
+,{"stream_name":"stdout","time":25.77710425,"data":"commit d38c43aeb22a44465aa5344af5a3b7bad72211ae\n"}
+,{"stream_name":"stdout","time":25.777108502,"data":"ngày   Thu May 1 17:38:59 2025 +0800\n"}
+,{"stream_name":"stdout","time":25.777112825,"data":"Add files via upload\n"}
+,{"stream_name":"stdout","time":25.777116764,"data":"\n"}
+,{"stream_name":"stdout","time":25.94524112,"data":"$ /usr/bin/python3 -m pip install -q --disable-pip-version-check pip\u003c24.1\n"}
+,{"stream_name":"stdout","time":32.083583765,"data":"$ /usr/bin/python3 -m pip install -q --disable-pip-version-check --no-deps pytorch-lightning==1.6.4\n"}
+,{"stream_name":"stdout","time":34.359668289,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 585.5/585.5 kB 8.8 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":34.35970545,"data":"\n"}
+,{"stream_name":"stdout","time":34.359710803,"data":"$ /usr/bin/python3 -m pip install -q --disable-pip-version-check pyDeprecate==0.3.2 torchmetrics==0.9.3\n"}
+,{"stream_name":"stdout","time":44.250768872,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 419.6/419.6 kB 11.8 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":44.25081274,"data":"DEPRECATION: pytorch-lightning 1.6.4 has a non-standard dependency specifier torch\u003e=1.8.*. pip 24.1 will enforce this behaviour change. A possible replacement is to upgrade to a newer version of pytorch-lightning or contact the author to suggest that they release a version with a conforming dependency specifiers. Discussion can be found at https://github.com/pypa/pip/issues/12063\n"}
+,{"stream_name":"stdout","time":44.250831087,"data":"ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\n"}
+,{"stream_name":"stdout","time":44.250836311,"data":"pytorch-lightning 1.6.4 requires protobuf\u003c=3.20.1, but you have protobuf 7.36.2 which is incompatible.\n"}
+,{"stream_name":"stdout","time":44.250839967,"data":"\n"}
+,{"stream_name":"stdout","time":44.250843556,"data":"$ /usr/bin/python3 -c import pkg_resources\n"}
+,{"stream_name":"stdout","time":44.636720904,"data":"$ /usr/bin/python3 -c import fsspec\n"}
+,{"stream_name":"stdout","time":44.636757212,"data":"$ /usr/bin/python3 -c import yaml\n"}
+,{"stream_name":"stdout","time":44.913464011,"data":"$ /usr/bin/python3 -c import tqdm\n"}
+,{"stream_name":"stdout","time":44.91349635,"data":"$ /usr/bin/python3 -c import tensorboard\n"}
+,{"stream_name":"stdout","time":44.913500792,"data":"$ /usr/bin/python3 -c import sklearn\n"}
+,{"stream_name":"stdout","time":48.855070325,"data":"$ /usr/bin/python3 -c import pandas\n"}
+,{"stream_name":"stdout","time":49.372044583,"data":"$ /usr/bin/python3 -c import matplotlib\n"}
+,{"stream_name":"stdout","time":49.760298126,"data":"$ /usr/bin/python3 -W ignore -c import json, sys, torch, torchvision, numpy, sklearn, pytorch_lightning, torchmetrics; print(json.dumps({'python': sys.version.split()[0], 'torch': torch.__version__, 'torchvision': torchvision.__version__, 'numpy': numpy.__version__, 'scikit-learn': sklearn.__version__, 'pytorch-lightning': pytorch_lightning.__version__, 'torchmetrics': torchmetrics.__version__}))\n"}
+,{"stream_name":"stdout","time":110.797112852,"data":"{\n"}
+,{"stream_name":"stdout","time":110.797153026,"data":"  \"python\": \"3.13.16\",\n"}
+,{"stream_name":"stdout","time":110.797159521,"data":"  \"torch\": \"2.11.0+cu130\",\n"}
+,{"stream_name":"stdout","time":110.797164193,"data":"  \"torchvision\": \"0.26.0+cu130\",\n"}
+,{"stream_name":"stdout","time":110.797169464,"data":"  \"numpy\": \"2.1.3\",\n"}
+,{"stream_name":"stdout","time":110.797174203,"data":"  \"scikit-learn\": \"1.6.1\",\n"}
+,{"stream_name":"stdout","time":110.797179392,"data":"  \"pytorch-lightning\": \"1.6.4\",\n"}
+,{"stream_name":"stdout","time":110.797183669,"data":"  \"torchmetrics\": \"0.9.3\"\n"}
+,{"stream_name":"stdout","time":110.797187693,"data":"}\n"}
+,{"stream_name":"stdout","time":144.34761684,"data":"$ curl -L --fail -sS --retry 3 -o /tmp/cub_data/CUB_processed.tar.gz https://worksheets.codalab.org/rest/bundles/0x5b9d528d2101418b87212db92fea6683/contents/blob/\n"}
+,{"stream_name":"stdout","time":146.927522277,"data":"Đã tải 9 MB, đang giải nén…\n"}
+,{"stream_name":"stdout","time":151.068959187,"data":"Chia tập + concept: /tmp/cub_data/CUB_processed/class_attr_data_10\n"}
+,{"stream_name":"stdout","time":151.081689254,"data":"Ảnh: /kaggle/input/datasets/wenewone/cub2002011/CUB_200_2011/images (11796 file .jpg)\n"}
+,{"stream_name":"stdout","time":151.081730115,"data":"Xong sau 0.7 phút\n"}
+,{"stream_name":"stdout","time":153.762826164,"data":"train:  4796 ảnh | 200 loài | [112] concept/ảnh | trung bình 22.9 concept 'có' | loài có \u003e1 vector: 0 | khớp cub_mapping.json: True | thiếu ảnh: 0\n"}
+,{"stream_name":"stdout","time":154.436930297,"data":"val  :  1198 ảnh | 200 loài | [112] concept/ảnh | trung bình 23.0 concept 'có' | loài có \u003e1 vector: 0 | khớp cub_mapping.json: True | thiếu ảnh: 0\n"}
+,{"stream_name":"stdout","time":157.283759137,"data":"test :  5794 ảnh | 200 loài | [112] concept/ảnh | trung bình 23.0 concept 'có' | loài có \u003e1 vector: 0 | khớp cub_mapping.json: True | thiếu ảnh: 0\n"}
+,{"stream_name":"stdout","time":157.283801248,"data":"Dữ liệu đúng như cách CBM xử lý: concept gán theo loài, mỗi loài đúng một vector 112 chiều.\n"}
+,{"stream_name":"stdout","time":157.32994528,"data":"  đã sửa data/data_util.py\n"}
+,{"stream_name":"stdout","time":157.32999163,"data":"  đã sửa main.py\n"}
+,{"stream_name":"stdout","time":157.33000014,"data":"  cub.json: epochs: 300 → 100\n"}
+,{"stream_name":"stdout","time":157.330004003,"data":"  cub.json: enable_progress_bar: True → False\n"}
+,{"stream_name":"stdout","time":157.330008083,"data":"  cub.json: random_seed: 42 → 123\n"}
+,{"stream_name":"stdout","time":157.330011944,"data":"  đã sửa main.py\n"}
+,{"stream_name":"stdout","time":157.33001526,"data":"  đã sửa main.py\n"}
+,{"stream_name":"stdout","time":157.330018553,"data":"$ git -C /kaggle/working/ECBM diff\n"}
+,{"stream_name":"stdout","time":157.330021931,"data":"diff --git a/configs/cub.json b/configs/cub.json\n"}
+,{"stream_name":"stdout","time":157.330025806,"data":"index c038937..5a4195f 100644\n"}
+,{"stream_name":"stdout","time":157.330029054,"data":"--- a/configs/cub.json\n"}
+,{"stream_name":"stdout","time":157.330032266,"data":"+++ b/configs/cub.json\n"}
+,{"stream_name":"stdout","time":157.330035395,"data":"@@ -1,5 +1,5 @@\n"}
+,{"stream_name":"stdout","time":157.330038551,"data":" {\n"}
+,{"stream_name":"stdout","time":157.330041622,"data":"-  \"random_seed\": 42,\n"}
+,{"stream_name":"stdout","time":157.330044959,"data":"+  \"random_seed\": 123,\n"}
+,{"stream_name":"stdout","time":157.330048248,"data":"   \"dataset\": \"cub\",\n"}
+,{"stream_name":"stdout","time":157.330051609,"data":"   \"freezebb\": false,\n"}
+,{"stream_name":"stdout","time":157.330054954,"data":"   \"gpu\": 0,\n"}
+,{"stream_name":"stdout","time":157.330058236,"data":"@@ -22,7 +22,7 @@\n"}
+,{"stream_name":"stdout","time":157.330061439,"data":"   \"sweep\": false,\n"}
+,{"stream_name":"stdout","time":157.330065151,"data":"   \"optim\": \"sgd\",\n"}
+,{"stream_name":"stdout","time":157.330068802,"data":"   \"learning_rate\": 0.01,\n"}
+,{"stream_name":"stdout","time":157.330072705,"data":"-  \"epochs\": 300,\n"}
+,{"stream_name":"stdout","time":157.330076432,"data":"+  \"epochs\": 100,\n"}
+,{"stream_name":"stdout","time":157.330080158,"data":"   \"batch_size\": 64,\n"}
+,{"stream_name":"stdout","time":157.330084132,"data":"   \"lr_c\":1e-1,\n"}
+,{"stream_name":"stdout","time":157.330087368,"data":"   \"lr_y\":1e-1,\n"}
+,{"stream_name":"stdout","time":157.330090588,"data":"@@ -46,7 +46,7 @@\n"}
+,{"stream_name":"stdout","time":157.330093731,"data":"   \"ipus\": null,\n"}
+,{"stream_name":"stdout","time":157.33009708,"data":"   \"log_gpu_memory\": null,\n"}
+,{"stream_name":"stdout","time":157.330100943,"data":"   \"progress_bar_refresh_rate\": null,\n"}
+,{"stream_name":"stdout","time":157.330105094,"data":"-  \"enable_progress_bar\": true,\n"}
+,{"stream_name":"stdout","time":157.3301094,"data":"+  \"enable_progress_bar\": false,\n"}
+,{"stream_name":"stdout","time":157.330113033,"data":"   \"overfit_batches\": 0.0,\n"}
+,{"stream_name":"stdout","time":157.330116641,"data":"   \"track_grad_norm\": -1,\n"}
+,{"stream_name":"stdout","time":157.330120088,"data":"   \"check_val_every_n_epoch\": 1,\n"}
+,{"stream_name":"stdout","time":157.330123341,"data":"diff --git a/data/data_util.py b/data/data_util.py\n"}
+,{"stream_name":"stdout","time":157.330134871,"data":"index 5dc7c90..1fa6cf4 100644\n"}
+,{"stream_name":"stdout","time":157.3301386,"data":"--- a/data/data_util.py\n"}
+,{"stream_name":"stdout","time":157.330142097,"data":"+++ b/data/data_util.py\n"}
+,{"stream_name":"stdout","time":157.330145609,"data":"@@ -5,7 +5,7 @@ import os\n"}
+,{"stream_name":"stdout","time":157.330149399,"data":" # CUB_DATA_DIR = \"YOUR/CUB/DATA/DIR\"\n"}
+,{"stream_name":"stdout","time":157.33015322400001,"data":" # AWA2_DATA_DIR = \"YOUR/AWA2/DATA/DIR\"\n"}
+,{"stream_name":"stdout","time":157.330157186,"data":" # CELEBA_DATA_DIR = \"YOUR/CELEBA/DATA/DIR\"\n"}
+,{"stream_name":"stdout","time":157.330160995,"data":"-CUB_DATA_DIR = \"/home/xxucb/data/pcbm_dataset/CUB\"\n"}
+,{"stream_name":"stdout","time":157.330164968,"data":"+CUB_DATA_DIR = os.environ.get(\"CUB_DATA_DIR\", \"/home/xxucb/data/pcbm_dataset/CUB\")\n"}
+,{"stream_name":"stdout","time":157.330169536,"data":" AWA2_DATA_DIR='/home/xxucb/data/pcbm_dataset/Animals_with_Attributes2'\n"}
+,{"stream_name":"stdout","time":157.330173646,"data":" CELEBA_DATA_DIR = \"/home/xxucb/data/pcbm_dataset/celeba\"\n"}
+,{"stream_name":"stdout","time":157.330177659,"data":" def get_dataset(args):\n"}
+,{"stream_name":"stdout","time":157.330181062,"data":"diff --git a/main.py b/main.py\n"}
+,{"stream_name":"stdout","time":157.330184669,"data":"index 9686e0b..9437f1d 100644\n"}
+,{"stream_name":"stdout","time":157.330188291,"data":"--- a/main.py\n"}
+,{"stream_name":"stdout","time":157.330192078,"data":"+++ b/main.py\n"}
+,{"stream_name":"stdout","time":157.330195466,"data":"@@ -1,7 +1,7 @@\n"}
+,{"stream_name":"stdout","time":157.330198888,"data":" import os\n"}
+,{"stream_name":"stdout","time":157.330202036,"data":" os.environ[\"CUDA_VISIBLE_DEVICES\"]=\"0\"\n"}
+,{"stream_name":"stdout","time":157.330205795,"data":" \n"}
+,{"stream_name":"stdout","time":157.33020937,"data":"-from LitModel import LitModel\n"}
+,{"stream_name":"stdout","time":157.330213216,"data":"+from ga_litmodel import GALitModel as LitModel\n"}
+,{"stream_name":"stdout","time":157.33021667,"data":" from pytorch_lightning import Trainer,seed_everything\n"}
+,{"stream_name":"stdout","time":157.33022027,"data":" from pytorch_lightning.callbacks import ModelCheckpoint\n"}
+,{"stream_name":"stdout","time":157.330224515,"data":" from pytorch_lightning.callbacks.early_stopping import EarlyStopping\n"}
+,{"stream_name":"stdout","time":157.330228391,"data":"@@ -56,7 +56,7 @@ args=Namespace(**args)\n"}
+,{"stream_name":"stdout","time":157.33023224,"data":" \n"}
+,{"stream_name":"stdout","time":157.330234977,"data":" if __name__ == '__main__':\n"}
+,{"stream_name":"stdout","time":157.330238031,"data":" \n"}
+,{"stream_name":"stdout","time":157.33024146,"data":"-    torch.use_deterministic_algorithms(True)\n"}
+,{"stream_name":"stdout","time":157.330246775,"data":"+    torch.use_deterministic_algorithms(True, warn_only=True)\n"}
+,{"stream_name":"stdout","time":157.330250504,"data":"     seed_everything(args.random_seed, workers=True)\n"}
+,{"stream_name":"stdout","time":157.330254326,"data":"     uuid = time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime())\n"}
+,{"stream_name":"stdout","time":157.330258378,"data":"     exp_dir = os.path.join(\"./exp\", uuid)\n"}
+,{"stream_name":"stdout","time":157.330262242,"data":"@@ -81,4 +81,5 @@ if __name__ == '__main__':\n"}
+,{"stream_name":"stdout","time":157.330265826,"data":"     # wandb_logger.watch(model,log_graph=False)\n"}
+,{"stream_name":"stdout","time":157.330269688,"data":"     trainer.fit(model,train_dataloaders=train_loader, val_dataloaders=val_loader)\n"}
+,{"stream_name":"stdout","time":157.330278767,"data":"     model.freeze()\n"}
+,{"stream_name":"stdout","time":157.330283048,"data":"-    trainer.test(model=model,ckpt_path=None,dataloaders=test_loader)\n"}
+,{"stream_name":"stdout","time":157.330287459,"data":"\\ No newline at end of file\n"}
+,{"stream_name":"stdout","time":157.33029182,"data":"+    if os.environ.get('ECBM_RUN_TEST') == '1':\n"}
+,{"stream_name":"stdout","time":157.330295692,"data":"+        trainer.test(model=model,ckpt_path=None,dataloaders=test_loader)\n"}
+,{"stream_name":"stdout","time":157.33029959,"data":"\\ No newline at end of file\n"}
+,{"stream_name":"stdout","time":157.33030326,"data":"\n"}
+,{"stream_name":"stdout","time":157.330306472,"data":"# ===== ga_ecbm.py (file mới) =====\n"}
+,{"stream_name":"stdout","time":157.330309968,"data":"\"\"\"GA-ECBM (Gated Additive ECBM) đặt trong code ECBM gốc (xmed-lab/ECBM, commit d38c43a).\n"}
+,{"stream_name":"stdout","time":157.330313522,"data":"\n"}
+,{"stream_name":"stdout","time":157.330316675,"data":"Giữ nguyên của tác giả: backbone ResNet101, nhánh ảnh → nhãn E_class và nhánh ảnh → concept E_concept của EBM_GL.\n"}
+,{"stream_name":"stdout","time":157.330320594,"data":"Thay: E_global(c, y) = −(b_y + Σ_k θ_{y,k}·c_k), tức bảng điểm cộng tính thay cho MLP trên cả vector concept.\n"}
+,{"stream_name":"stdout","time":157.330324397,"data":"Nhờ cộng tính, p(y | x, concept đã biết) và p(c_k | x, …) tính chính xác bằng công thức đóng, không cần tối ưu gradient.\n"}
+,{"stream_name":"stdout","time":157.330328422,"data":"Khi can thiệp k nhóm concept, nhánh ảnh nhân với cổng w(k) = exp(−Σ_{j≤k} softplus(a_j)), w(0) = 1.\n"}
+,{"stream_name":"stdout","time":157.33033211,"data":"\"\"\"\n"}
+,{"stream_name":"stdout","time":157.330335334,"data":"import os\n"}
+,{"stream_name":"stdout","time":157.330338535,"data":"\n"}
+,{"stream_name":"stdout","time":157.330341664,"data":"import torch\n"}
+,{"stream_name":"stdout","time":157.330344831,"data":"import torch.nn as nn\n"}
+,{"stream_name":"stdout","time":157.330348043,"data":"import torch.nn.functional as F\n"}
+,{"stream_name":"stdout","time":157.330351246,"data":"\n"}
+,{"stream_name":"stdout","time":157.330354383,"data":"from data.cub import CONCEPT_GROUP_MAP\n"}
+,{"stream_name":"stdout","time":157.330357819,"data":"from networks.EBM import ECBM\n"}
+,{"stream_name":"stdout","time":157.330360895,"data":"\n"}
+,{"stream_name":"stdout","time":157.330365603,"data":"GROUPS = [list(indices) for indices in CONCEPT_GROUP_MAP.values()]   # 28 nhóm, như phần can thiệp theo nhóm của tác giả\n"}
+,{"stream_name":"stdout","time":157.330373745,"data":"GATE_INIT = float(os.environ.get(\"GA_GATE_INIT\", \"-3.1\"))             # softplus(−3.1) ≈ 0.044 → w(28) ≈ 0.29\n"}
+,{"stream_name":"stdout","time":157.330376675,"data":"\n"}
+,{"stream_name":"stdout","time":157.330378732,"data":"\n"}
+,{"stream_name":"stdout","time":157.33038078,"data":"class GAECBM(ECBM):\n"}
+,{"stream_name":"stdout","time":157.330382929,"data":"    def __init__(self, args, emb_size, cpt_size, hid_size, n_classes):\n"}
+,{"stream_name":"stdout","time":157.330385148,"data":"        super().__init__(args, emb_size=emb_size, cpt_size=cpt_size, hid_size=hid_size, n_classes=n_classes)\n"}
+,{"stream_name":"stdout","time":157.330387444,"data":"        head = self.energy_model\n"}
+,{"stream_name":"stdout","time":157.330390165,"data":"        del head.concept_proj, head.fc_c, head.classifier_cy        # MLP E_global của tác giả: không dùng nữa\n"}
+,{"stream_name":"stdout","time":157.330392648,"data":"        self.theta = nn.Parameter(torch.zeros(n_classes, cpt_size))  # θ_{y,k}: điểm của concept k = 1 cho loài y\n"}
+,{"stream_name":"stdout","time":157.330398398,"data":"        self.label_bias = nn.Parameter(torch.zeros(n_classes))       # b_y\n"}
+,{"stream_name":"stdout","time":157.330400809,"data":"        self.gate_steps = nn.Parameter(torch.full((len(GROUPS),), GATE_INIT))\n"}
+,{"stream_name":"stdout","time":157.330403066,"data":"        group_of = torch.zeros(cpt_size, dtype=torch.long)\n"}
+,{"stream_name":"stdout","time":157.330405288,"data":"        for g, indices in enumerate(GROUPS):\n"}
+,{"stream_name":"stdout","time":157.330407573,"data":"            group_of[indices] = g\n"}
+,{"stream_name":"stdout","time":157.330409773,"data":"        self.register_buffer(\"group_of\", group_of, persistent=False)\n"}
+,{"stream_name":"stdout","time":157.330412117,"data":"\n"}
+,{"stream_name":"stdout","time":157.330414177,"data":"    def energies(self, images):\n"}
+,{"stream_name":"stdout","time":157.330416422,"data":"        \"\"\"E_class [B, C] và E_concept [B, K, 2] của tác giả; E_concept[..., s] là năng lượng của trạng thái s.\"\"\"\n"}
+,{"stream_name":"stdout","time":157.330419144,"data":"        emb = self.backbone(images)\n"}
+,{"stream_name":"stdout","time":157.330421301,"data":"        e_class, _, e_concept = self.energy_model(emb, None, True, use_cy=False)\n"}
+,{"stream_name":"stdout","time":157.330423506,"data":"        return e_class, e_concept\n"}
+,{"stream_name":"stdout","time":157.330425685,"data":"\n"}
+,{"stream_name":"stdout","time":157.330427715,"data":"    def gate(self, verified_groups):\n"}
+,{"stream_name":"stdout","time":157.33042992,"data":"        w = torch.exp(-torch.cat([self.gate_steps.new_zeros(1), torch.cumsum(F.softplus(self.gate_steps), 0)]))\n"}
+,{"stream_name":"stdout","time":157.330432166,"data":"        return w[verified_groups]\n"}
+,{"stream_name":"stdout","time":157.330434311,"data":"\n"}
+,{"stream_name":"stdout","time":157.330436345,"data":"    def global_score(self, concepts):\n"}
+,{"stream_name":"stdout","time":157.330438489,"data":"        \"\"\"−E_global(c, y) cho mọi y: [B, C].\"\"\"\n"}
+,{"stream_name":"stdout","time":157.33044084,"data":"        return self.label_bias + concepts.float() @ self.theta.t()\n"}
+,{"stream_name":"stdout","time":157.330443034,"data":"\n"}
+,{"stream_name":"stdout","time":157.330445089,"data":"    def posterior(self, e_class, e_concept, mask=None, values=None, class_weight=None):\n"}
+,{"stream_name":"stdout","time":157.330447317,"data":"        \"\"\"log p(y | x, c_S) [B, C] và p(c_k = 1 | x, c_S) [B, K]; tính ở FP32.\"\"\"\n"}
+,{"stream_name":"stdout","time":157.330449716,"data":"        e_class, e_concept = e_class.float(), e_concept.float()\n"}
+,{"stream_name":"stdout","time":157.330451915,"data":"        t1 = -e_concept[..., 1][:, None, :] + self.theta[None]          # [B, C, K]\n"}
+,{"stream_name":"stdout","time":157.330454147,"data":"        t0 = (-e_concept[..., 0])[:, None, :].expand_as(t1)\n"}
+,{"stream_name":"stdout","time":157.330456368,"data":"        per_concept = torch.logaddexp(t0, t1)\n"}
+,{"stream_name":"stdout","time":157.330458522,"data":"        p1_given_y = torch.sigmoid(t1 - t0)\n"}
+,{"stream_name":"stdout","time":157.330460709,"data":"        if mask is not None:\n"}
+,{"stream_name":"stdout","time":157.330462978,"data":"            observed = torch.where(values[:, None, :].bool(), t1, t0)\n"}
+,{"stream_name":"stdout","time":157.330465199,"data":"            per_concept = torch.where(mask[:, None, :], observed, per_concept)\n"}
+,{"stream_name":"stdout","time":157.330467426,"data":"            p1_given_y = torch.where(mask[:, None, :], values[:, None, :].float(), p1_given_y)\n"}
+,{"stream_name":"stdout","time":157.330471756,"data":"        weight = 1.0 if class_weight is None else class_weight.float()[:, None]\n"}
+,{"stream_name":"stdout","time":157.33047469,"data":"        log_p_y = (-weight * e_class + self.label_bias[None] + per_concept.sum(-1)).log_softmax(-1)\n"}
+,{"stream_name":"stdout","time":157.330477028,"data":"        return log_p_y, (log_p_y.exp()[:, :, None] * p1_given_y).sum(1)\n"}
+,{"stream_name":"stdout","time":157.330479249,"data":"\n"}
+,{"stream_name":"stdout","time":157.330481298,"data":"\n"}
+,{"stream_name":"stdout","time":157.330483338,"data":"def ga_losses(model, loss_label, loss_concept, images, labels, concepts, weights=(3, 1, 1)):\n"}
+,{"stream_name":"stdout","time":157.330485583,"data":"    \"\"\"Loss của GA-ECBM cho một batch.\n"}
+,{"stream_name":"stdout","time":157.330487863,"data":"\n"}
+,{"stream_name":"stdout","time":157.330489939,"data":"    Trả về (loss train, loss validation kiểu tác giả, các thành phần, (e_class, e_concept, concept sạch)).\n"}
+,{"stream_name":"stdout","time":157.330492437,"data":"    Loss gốc 3 : 1 : 1 gọi đúng hàm loss và cy_augment của tác giả. Trong forward gốc, cy_augment sửa thẳng tensor concept\n"}
+,{"stream_name":"stdout","time":157.330494989,"data":"    của batch, nên L_xc của tác giả cũng tính trên concept đã xáo trộn; ở đây giữ nguyên hành vi đó cho phần loss gốc.\n"}
+,{"stream_name":"stdout","time":157.330502638,"data":"    Ba loss mới dùng concept sạch (bản sao lấy trước khi xáo trộn).\n"}
+,{"stream_name":"stdout","time":157.330505063,"data":"    \"\"\"\n"}
+,{"stream_name":"stdout","time":157.330507217,"data":"    clean = concepts.clone()\n"}
+,{"stream_name":"stdout","time":157.33050939,"data":"    head = model.energy_model\n"}
+,{"stream_name":"stdout","time":157.33051154,"data":"    e_class, e_concept = model.energies(images)\n"}
+,{"stream_name":"stdout","time":157.330513714,"data":"    perturbed = head.cy_augment(c_gt=concepts.unsqueeze(-1), permute_ratio=head.cy_concept_perturb_prob,\n"}
+,{"stream_name":"stdout","time":157.33051598,"data":"                                permute_prob=head.cy_sample_perturb_prob).squeeze(-1)\n"}
+,{"stream_name":"stdout","time":157.330518219,"data":"    loss_xy = loss_label(e_class, labels)\n"}
+,{"stream_name":"stdout","time":157.330520389,"data":"    loss_cy = loss_label(-model.global_score(perturbed), labels)       # EBMLoss_label nhận năng lượng\n"}
+,{"stream_name":"stdout","time":157.330522772,"data":"    loss_xc = loss_concept(e_concept, concepts)\n"}
+,{"stream_name":"stdout","time":157.330524941,"data":"    w_xy, w_xc, w_cy = weights\n"}
+,{"stream_name":"stdout","time":157.330527097,"data":"    base = w_xy * loss_xy + w_xc * loss_xc + w_cy * loss_cy\n"}
+,{"stream_name":"stdout","time":157.330529313,"data":"\n"}
+,{"stream_name":"stdout","time":157.330531379,"data":"    device_type = \"cuda\" if images.is_cuda else \"cpu\"\n"}
+,{"stream_name":"stdout","time":157.330533742,"data":"    with torch.autocast(device_type=device_type, enabled=False):\n"}
+,{"stream_name":"stdout","time":157.330535947,"data":"        count, n_groups = len(labels), len(GROUPS)\n"}
+,{"stream_name":"stdout","time":157.330538135,"data":"        log_p_y, p_c = model.posterior(e_class, e_concept)\n"}
+,{"stream_name":"stdout","time":157.330540352,"data":"        joint = F.nll_loss(log_p_y, labels) + F.binary_cross_entropy(p_c.clamp(1e-6, 1 - 1e-6), clean.float())\n"}
+,{"stream_name":"stdout","time":157.330542655,"data":"        groups = torch.rand(count, n_groups, device=images.device) \u003c torch.rand(count, 1, device=images.device)\n"}
+,{"stream_name":"stdout","time":157.330547291,"data":"        drop = torch.rand(count, device=images.device) \u003c 0.5                  # nửa số ca tắt hẳn nhánh ảnh\n"}
+,{"stream_name":"stdout","time":157.330575167,"data":"        k = groups.sum(1)\n"}
+,{"stream_name":"stdout","time":157.330579129,"data":"        w_k = torch.where(drop, torch.zeros_like(k, dtype=torch.float), model.gate(k))\n"}
+,{"stream_name":"stdout","time":157.330583194,"data":"        log_int, _ = model.posterior(e_class, e_concept, groups[:, model.group_of], clean, w_k)\n"}
+,{"stream_name":"stdout","time":157.330586721,"data":"        loss_int = F.nll_loss(log_int, labels, reduction=\"none\")\n"}
+,{"stream_name":"stdout","time":157.330590673,"data":"        extra = torch.multinomial((~groups).float() + 1e-9, 1).squeeze(1)      # xác minh thêm 1 nhóm\n"}
+,{"stream_name":"stdout","time":157.330594758,"data":"        groups_more = groups.clone()\n"}
+,{"stream_name":"stdout","time":157.330598122,"data":"        groups_more[torch.arange(count, device=images.device), extra] = True\n"}
+,{"stream_name":"stdout","time":157.330601518,"data":"        k_more = groups_more.sum(1)\n"}
+,{"stream_name":"stdout","time":157.330604813,"data":"        w_more = torch.where(drop, torch.zeros_like(k_more, dtype=torch.float), model.gate(k_more))\n"}
+,{"stream_name":"stdout","time":157.330608225,"data":"        log_more, _ = model.posterior(e_class, e_concept, groups_more[:, model.group_of], clean, w_more)\n"}
+,{"stream_name":"stdout","time":157.330611739,"data":"        mono = F.relu(F.nll_loss(log_more, labels, reduction=\"none\") - loss_int).mean()\n"}
+,{"stream_name":"stdout","time":157.330615298,"data":"    total = base + joint + loss_int.mean() + mono\n"}
+,{"stream_name":"stdout","time":157.330618608,"data":"    val_like = loss_xc + loss_xy + loss_cy                                   # như validation_step của tác giả\n"}
+,{"stream_name":"stdout","time":157.330622193,"data":"    parts = {\"xy\": loss_xy, \"xc\": loss_xc, \"cy\": loss_cy, \"joint\": joint, \"int\": loss_int.mean(), \"mono\": mono}\n"}
+,{"stream_name":"stdout","time":157.330626194,"data":"    return total, val_like, parts, (e_class, e_concept, clean, log_p_y, p_c)\n"}
+,{"stream_name":"stdout","time":157.330629584,"data":"\n"}
+,{"stream_name":"stdout","time":157.330632613,"data":"# ===== ga_litmodel.py (file mới) =====\n"}
+,{"stream_name":"stdout","time":157.330635862,"data":"\"\"\"LightningModule của GA-ECBM: kế thừa LitModel của tác giả, giữ nguyên optimizer, scheduler và cách log.\n"}
+,{"stream_name":"stdout","time":157.33063983,"data":"\n"}
+,{"stream_name":"stdout","time":157.330648789,"data":"main.py chỉ đổi một dòng import để dùng lớp này; mọi thứ khác (dữ liệu, sampler, ModelCheckpoint, số epoch) giữ nguyên.\n"}
+,{"stream_name":"stdout","time":157.330651747,"data":"\"\"\"\n"}
+,{"stream_name":"stdout","time":157.330653897,"data":"import logging\n"}
+,{"stream_name":"stdout","time":157.330656001,"data":"import os\n"}
+,{"stream_name":"stdout","time":157.330658865,"data":"\n"}
+,{"stream_name":"stdout","time":157.330687813,"data":"import torch\n"}
+,{"stream_name":"stdout","time":157.33069143,"data":"\n"}
+,{"stream_name":"stdout","time":157.330695031,"data":"from LitModel import LitModel\n"}
+,{"stream_name":"stdout","time":157.330702111,"data":"from ga_ecbm import GATE_INIT, GROUPS, GAECBM, ga_losses\n"}
+,{"stream_name":"stdout","time":157.330706021,"data":"\n"}
+,{"stream_name":"stdout","time":157.330709139,"data":"\n"}
+,{"stream_name":"stdout","time":157.330712155,"data":"def _accuracy(pred, target):\n"}
+,{"stream_name":"stdout","time":157.33071537,"data":"    return (pred == target).float().mean()\n"}
+,{"stream_name":"stdout","time":157.330722364,"data":"\n"}
+,{"stream_name":"stdout","time":157.330725548,"data":"\n"}
+,{"stream_name":"stdout","time":157.330728651,"data":"class GALitModel(LitModel):\n"}
+,{"stream_name":"stdout","time":157.330731869,"data":"    def __init__(self, logdir, args):\n"}
+,{"stream_name":"stdout","time":157.330735085,"data":"        super().__init__(logdir, args)\n"}
+,{"stream_name":"stdout","time":157.330738333,"data":"        self.network = GAECBM(args=args, emb_size=args.emb_size, cpt_size=args.cpt_size, hid_size=args.hid_size,\n"}
+,{"stream_name":"stdout","time":157.330741789,"data":"                              n_classes=args.n_classes)\n"}
+,{"stream_name":"stdout","time":157.33074513,"data":"        logging.info(\"GA-ECBM: gate_init=%s, groups=%d\", GATE_INIT, len(GROUPS))   # dấu để notebook nhận ra lần chạy GA\n"}
+,{"stream_name":"stdout","time":157.330748866,"data":"\n"}
+,{"stream_name":"stdout","time":157.330751972,"data":"    def _step(self, batch, stage):\n"}
+,{"stream_name":"stdout","time":157.33075522,"data":"        images, labels, concepts = batch\n"}
+,{"stream_name":"stdout","time":157.330759026,"data":"        total, val_like, parts, (e_class, e_concept, clean, log_p_y, p_c) = ga_losses(\n"}
+,{"stream_name":"stdout","time":157.330764026,"data":"            self.network, self.loss_label, self.loss_concept, images, labels, concepts,\n"}
+,{"stream_name":"stdout","time":157.330771106,"data":"            (self.lambda_xy, self.lambda_xc, self.lambda_cy))\n"}
+,{"stream_name":"stdout","time":157.330786706,"data":"        pred_c_direct = torch.argmin(e_concept, 2)\n"}
+,{"stream_name":"stdout","time":157.330790851,"data":"        pred_c_post = (p_c \u003e 0.5).long()\n"}
+,{"stream_name":"stdout","time":157.330794608,"data":"        values = {\n"}
+,{"stream_name":"stdout","time":157.330798432,"data":"            # như tác giả: đọc trực tiếp năng lượng, concept so với tensor của batch (đã bị cy_augment sửa)\n"}
+,{"stream_name":"stdout","time":157.330802986,"data":"            f\"accuracy_{stage}_y_xy\": _accuracy(torch.argmin(e_class, 1), labels),\n"}
+,{"stream_name":"stdout","time":157.330806571,"data":"            f\"accuracy_{stage}_c\": _accuracy(pred_c_direct, concepts),\n"}
+,{"stream_name":"stdout","time":157.330810037,"data":"            f\"accuracy_{stage}_c_overall\": (pred_c_direct == concepts).all(1).float().mean(),\n"}
+,{"stream_name":"stdout","time":157.330813512,"data":"            # GA-ECBM: suy luận chính xác, so với concept sạch\n"}
+,{"stream_name":"stdout","time":157.330816937,"data":"            f\"accuracy_{stage}_y_post\": _accuracy(log_p_y.argmax(1), labels),\n"}
+,{"stream_name":"stdout","time":157.330820369,"data":"            f\"accuracy_{stage}_c_post\": _accuracy(pred_c_post, clean),\n"}
+,{"stream_name":"stdout","time":157.330823774,"data":"            f\"accuracy_{stage}_c_overall_post\": (pred_c_post == clean).all(1).float().mean(),\n"}
+,{"stream_name":"stdout","time":157.330827217,"data":"        }\n"}
+,{"stream_name":"stdout","time":157.3308304,"data":"        for name, value in values.items():\n"}
+,{"stream_name":"stdout","time":157.330833639,"data":"            self.log(name, value, on_epoch=True, on_step=False)\n"}
+,{"stream_name":"stdout","time":157.330836923,"data":"        return total, val_like, parts, values\n"}
+,{"stream_name":"stdout","time":157.330840204,"data":"\n"}
+,{"stream_name":"stdout","time":157.330843226,"data":"    def training_step(self, batch, batch_idx):\n"}
+,{"stream_name":"stdout","time":157.3308464,"data":"        total, _, parts, _ = self._step(batch, \"train\")\n"}
+,{"stream_name":"stdout","time":157.330856446,"data":"        self.log(\"epoch_loss\", total, on_epoch=True)                 # scheduler của tác giả theo dõi epoch_loss_epoch\n"}
+,{"stream_name":"stdout","time":157.330865366,"data":"        for name, value in parts.items():\n"}
+,{"stream_name":"stdout","time":157.330868462,"data":"            self.log(f\"epoch_loss_{name}\", value, on_epoch=True)\n"}
+,{"stream_name":"stdout","time":157.330883091,"data":"        if batch_idx == 0:\n"}
+,{"stream_name":"stdout","time":157.330887065,"data":"            w = self.network.gate(torch.tensor([0, 7, 14, 28], device=self.device))\n"}
+,{"stream_name":"stdout","time":157.330890897,"data":"            self.log(\"gate_w_7\", w[1], on_epoch=True, on_step=False)\n"}
+,{"stream_name":"stdout","time":157.330895004,"data":"            self.log(\"gate_w_28\", w[3], on_epoch=True, on_step=False)\n"}
+,{"stream_name":"stdout","time":157.330899039,"data":"        return total\n"}
+,{"stream_name":"stdout","time":157.330902327,"data":"\n"}
+,{"stream_name":"stdout","time":157.330905441,"data":"    def validation_step(self, batch, batch_idx):\n"}
+,{"stream_name":"stdout","time":157.330908666,"data":"        _, val_like, parts, _ = self._step(batch, \"val\")\n"}
+,{"stream_name":"stdout","time":157.330912089,"data":"        self.log(\"epoch_val_loss\", val_like, on_epoch=True)         # ModelCheckpoint theo dõi khóa này, như tác giả\n"}
+,{"stream_name":"stdout","time":157.330916313,"data":"        for name, value in parts.items():\n"}
+,{"stream_name":"stdout","time":157.330919685,"data":"            self.log(f\"epoch_val_loss_{name}\", value, on_epoch=True)\n"}
+,{"stream_name":"stdout","time":157.330923107,"data":"        return val_like\n"}
+,{"stream_name":"stdout","time":157.330926304,"data":"\n"}
+,{"stream_name":"stdout","time":157.330929397,"data":"    def test_step(self, batch, batch_idx):\n"}
+,{"stream_name":"stdout","time":157.330932556,"data":"        _, _, _, values = self._step(batch, \"test\")\n"}
+,{"stream_name":"stdout","time":157.330935968,"data":"        return [values[\"accuracy_test_c_overall_post\"].item(), values[\"accuracy_test_c_post\"].item(),\n"}
+,{"stream_name":"stdout","time":157.330939554,"data":"                values[\"accuracy_test_y_xy\"].item(), values[\"accuracy_test_y_post\"].item()]\n"}
+,{"stream_name":"stdout","time":157.330943047,"data":"\n"}
+,{"stream_name":"stdout","time":157.330946121,"data":"    def test_epoch_end(self, outputs):\n"}
+,{"stream_name":"stdout","time":157.330949354,"data":"        mean = torch.tensor(outputs).mean(0)\n"}
+,{"stream_name":"stdout","time":157.330952699,"data":"        for name, value in zip((\"accuracy_test_c_overall_post\", \"accuracy_test_c_post\", \"accuracy_test_y_xy\",\n"}
+,{"stream_name":"stdout","time":157.330961114,"data":"                                \"accuracy_test_y_post\"), mean):\n"}
+,{"stream_name":"stdout","time":157.330964443,"data":"            logging.info(\"%s: %s\", name, float(value))\n"}
+,{"stream_name":"stdout","time":157.330978372,"data":"\n"}
+,{"stream_name":"stdout","time":158.808630536,"data":"Sai lệch lớn nhất so với duyệt hết tổ hợp: 5.96e-07\n"}
+,{"stream_name":"stdout","time":158.808671187,"data":"28 nhóm concept, 112 concept\n"}
+,{"stream_name":"stdout","time":159.010185925,"data":"$ /usr/bin/python3 /kaggle/working/compat_run.py /kaggle/working/bench_step.py 32 64 10\n"}
+,{"stream_name":"stdout","time":176.159378524,"data":"precision 32, batch 64, cộng dồn 1 bước: {'ok': False, 'precision': 32, 'error': 'out of memory'}\n"}
+,{"stream_name":"stdout","time":176.159427002,"data":"$ /usr/bin/python3 /kaggle/working/compat_run.py /kaggle/working/bench_step.py 16 64 10\n"}
+,{"stream_name":"stdout","time":202.972853625,"data":"precision 16, batch 64, cộng dồn 1 bước: {'ok': True, 'precision': 16, 'sec_per_step': 1.611167573928833, 'peak_gb': 7.845855712890625}\n"}
+,{"stream_name":"stdout","time":202.972910825,"data":"Khác cấu hình tác giả: {'precision': 16}\n"}
+,{"stream_name":"stdout","time":202.972916535,"data":"Ước lượng: 2.5 phút/epoch → 100 epoch ≈ 4.1 giờ\n"}
+,{"stream_name":"stdout","time":203.075153022,"data":"  cub.json: epochs: 100 → 1\n"}
+,{"stream_name":"stdout","time":203.075185453,"data":"  cub.json: precision: 32 → 16\n"}
+,{"stream_name":"stdout","time":233.278954151,"data":"/usr/local/lib/python3.13/dist-packages/pytorch_lightning/utilities/imports.py:22: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools\u003c81.\n"}
+,{"stream_name":"stdout","time":233.279027498,"data":"  import pkg_resources\n"}
+,{"stream_name":"stdout","time":233.279036349,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stdout","time":233.279041347,"data":"I0000 00:00:1794569850.608717     178 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stdout","time":233.279046584,"data":"Global seed set to 123\n"}
+,{"stream_name":"stdout","time":233.279051387,"data":"128 training set size\n"}
+,{"stream_name":"stdout","time":233.279072965,"data":"64 val set size\n"}
+,{"stream_name":"stdout","time":233.279077914,"data":"128 test set size\n"}
+,{"stream_name":"stdout","time":233.279083186,"data":"/usr/local/lib/python3.13/dist-packages/pytorch_lightning/core/lightning.py:2067: DeprecationWarning: `torch.distributed._sharded_tensor` will be deprecated, use `torch.distributed._shard.sharded_tensor` instead\n"}
+,{"stream_name":"stdout","time":233.279089263,"data":"  from torch.distributed._sharded_tensor import pre_load_state_dict_hook, state_dict_hook\n"}
+,{"stream_name":"stdout","time":233.279094866,"data":"Using 16bit native Automatic Mixed Precision (AMP)\n"}
+,{"stream_name":"stdout","time":233.279100119,"data":"/usr/local/lib/python3.13/dist-packages/pytorch_lightning/plugins/precision/native_amp.py:53: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.\n"}
+,{"stream_name":"stdout","time":233.279106686,"data":"  scaler = torch.cuda.amp.GradScaler()\n"}
+,{"stream_name":"stdout","time":233.279111655,"data":"GPU available: True, used: True\n"}
+,{"stream_name":"stdout","time":233.279116555,"data":"TPU available: False, using: 0 TPU cores\n"}
+,{"stream_name":"stdout","time":233.279121396,"data":"IPU available: False, using: 0 IPUs\n"}
+,{"stream_name":"stdout","time":233.279126365,"data":"HPU available: False, using: 0 HPUs\n"}
+,{"stream_name":"stdout","time":233.279131428,"data":"Missing logger folder: ./exp/2026-11-13_11-37-31/lightning_logs\n"}
+,{"stream_name":"stdout","time":233.279137123,"data":"/usr/local/lib/python3.13/dist-packages/pytorch_lightning/callbacks/model_checkpoint.py:611: UserWarning: Checkpoint directory ./exp/2026-11-13_11-37-31 exists and is not empty.\n"}
+,{"stream_name":"stdout","time":233.279142976,"data":"  rank_zero_warn(f\"Checkpoint directory {dirpath} exists and is not empty.\")\n"}
+,{"stream_name":"stdout","time":233.279148432,"data":"LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]\n"}
+,{"stream_name":"stdout","time":233.279153491,"data":"\n"}
+,{"stream_name":"stdout","time":233.279163358,"data":"  | Name         | Type            | Params\n"}
+,{"stream_name":"stdout","time":233.279179021,"data":"-------------------------------------------------\n"}
+,{"stream_name":"stdout","time":233.279183543,"data":"0 | network      | GAECBM          | 44.9 M\n"}
+,{"stream_name":"stdout","time":233.279187463,"data":"1 | loss_label   | EBMLoss_label   | 0     \n"}
+,{"stream_name":"stdout","time":233.279191393,"data":"2 | loss_concept | EBMLoss_concept | 0     \n"}
+,{"stream_name":"stdout","time":233.279195326,"data":"-------------------------------------------------\n"}
+,{"stream_name":"stdout","time":233.279202241,"data":"44.9 M    Trainable params\n"}
+,{"stream_name":"stdout","time":233.279207109,"data":"0         Non-trainable params\n"}
+,{"stream_name":"stdout","time":233.279210983,"data":"44.9 M    Total params\n"}
+,{"stream_name":"stdout","time":233.27921477,"data":"89.793    Total estimated model params size (MB)\n"}
+,{"stream_name":"stdout","time":233.279219068,"data":"/usr/local/lib/python3.13/dist-packages/pytorch_lightning/trainer/trainer.py:1933: PossibleUserWarning: The number of training batches (2) is smaller than the logging interval Trainer(log_every_n_steps=50). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.\n"}
+,{"stream_name":"stdout","time":233.279224001,"data":"  rank_zero_warn(\n"}
+,{"stream_name":"stdout","time":233.279227863,"data":"\n"}
+,{"stream_name":"stderr","time":236.259448136,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":236.259507049,"data":"I0000 00:00:1794569873.170579      23 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":236.462457449,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":236.462482877,"data":"I0000 00:00:1794569873.170579      23 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":236.462488072,"data":"\n"}
+,{"stream_name":"stderr","time":236.462491478,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":236.462494915,"data":"I0000 00:00:1794569873.170579      23 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stdout","time":237.380155966,"data":"Chỉ số validation sau 1 epoch: {'accuracy_val_y_xy': 0.0, 'accuracy_val_c': 0.4845, 'accuracy_val_c_overall': 0.0, 'accuracy_val_y_post': 0.0156, 'accuracy_val_c_post': 0.4859, 'accuracy_val_c_overall_post': 0.0, 'epoch_val_loss': 88.2305, 'epoch_val_loss_xy': 5.2983, 'epoch_val_loss_xc': 77.637, 'epoch_val_loss_cy': 5.2951, 'epoch_val_loss_joint': 5.99, 'epoch_val_loss_int': 5.2961, 'epoch_val_loss_mono': 0.0001}\n"}
+,{"stream_name":"stdout","time":237.380186408,"data":"Train thử xong sau 0.6 phút. Mục 14 sẽ chấm thử checkpoint này rồi xoá.\n"}
+,{"stream_name":"stdout","time":242.830131809,"data":"Checkpoint ECBM seed 123 ở Input: CHƯA GẮN (sẽ không so sánh được)\n"}
+,{"stream_name":"stdout","time":242.830194186,"data":"  cub.json: precision: 32 → 16\n"}
+,{"stream_name":"stdout","time":242.830200033,"data":"Cấu hình train: {'epochs': 100, 'batch_size': 64, 'accumulate_grad_batches': None, 'precision': 16, 'optim': 'sgd', 'learning_rate': 0.01, 'momentum': 0.9, 'weight_decay': 4e-05, 'lambda_xy': 3, 'lambda_xc': 1, 'lambda_cy': 1, 'random_seed': 123, 'resume_from_checkpoint': None}\n"}
+,{"stream_name":"stdout","time":842.65354001,"data":"[  10.0 phút] xong 4/100 epoch | val loss 57.378 | class GA 0.020 | concept GA 0.832 | overall GA 0.000 | w(28) 0.290\n"}
+,{"stream_name":"stdout","time":1442.659841617,"data":"[  20.0 phút] xong 8/100 epoch | val loss 48.181 | class GA 0.173 | concept GA 0.872 | overall GA 0.003 | w(28) 0.295\n"}
+,{"stream_name":"stdout","time":2042.672696505,"data":"[  30.0 phút] xong 12/100 epoch | val loss 44.860 | class GA 0.326 | concept GA 0.884 | overall GA 0.004 | w(28) 0.315\n"}
+,{"stream_name":"stdout","time":2642.68760949,"data":"[  40.0 phút] xong 17/100 epoch | val loss 39.273 | class GA 0.554 | concept GA 0.915 | overall GA 0.027 | w(28) 0.329\n"}
+,{"stream_name":"stdout","time":3242.704409949,"data":"[  50.0 phút] xong 21/100 epoch | val loss 37.837 | class GA 0.608 | concept GA 0.926 | overall GA 0.070 | w(28) 0.334\n"}
+,{"stream_name":"stdout","time":3842.723078064,"data":"[  60.0 phút] xong 25/100 epoch | val loss 35.754 | class GA 0.650 | concept GA 0.934 | overall GA 0.147 | w(28) 0.335\n"}
+,{"stream_name":"stdout","time":4442.743743182,"data":"[  70.0 phút] xong 30/100 epoch | val loss 33.794 | class GA 0.683 | concept GA 0.945 | overall GA 0.277 | w(28) 0.335\n"}
+,{"stream_name":"stdout","time":5042.77016169,"data":"[  80.0 phút] xong 34/100 epoch | val loss 33.472 | class GA 0.662 | concept GA 0.945 | overall GA 0.310 | w(28) 0.335\n"}
+,{"stream_name":"stdout","time":5642.793415264,"data":"[  90.0 phút] xong 38/100 epoch | val loss 32.406 | class GA 0.692 | concept GA 0.954 | overall GA 0.388 | w(28) 0.334\n"}
+,{"stream_name":"stdout","time":6242.819892413,"data":"[ 100.0 phút] xong 43/100 epoch | val loss 31.706 | class GA 0.710 | concept GA 0.955 | overall GA 0.467 | w(28) 0.332\n"}
+,{"stream_name":"stdout","time":6842.846966017,"data":"[ 110.0 phút] xong 47/100 epoch | val loss 30.784 | class GA 0.723 | concept GA 0.957 | overall GA 0.469 | w(28) 0.331\n"}
+,{"stream_name":"stdout","time":7442.880144248,"data":"[ 120.0 phút] xong 51/100 epoch | val loss 32.084 | class GA 0.689 | concept GA 0.952 | overall GA 0.477 | w(28) 0.330\n"}
+,{"stream_name":"stdout","time":8042.923344586,"data":"[ 130.0 phút] xong 56/100 epoch | val loss 30.340 | class GA 0.729 | concept GA 0.961 | overall GA 0.533 | w(28) 0.328\n"}
+,{"stream_name":"stdout","time":8642.951612851,"data":"[ 140.0 phút] xong 60/100 epoch | val loss 32.898 | class GA 0.680 | concept GA 0.951 | overall GA 0.492 | w(28) 0.327\n"}
+,{"stream_name":"stdout","time":9242.983903277,"data":"[ 150.0 phút] xong 64/100 epoch | val loss 29.700 | class GA 0.737 | concept GA 0.962 | overall GA 0.583 | w(28) 0.325\n"}
+,{"stream_name":"stdout","time":9843.024596618,"data":"[ 160.0 phút] xong 69/100 epoch | val loss 30.462 | class GA 0.710 | concept GA 0.957 | overall GA 0.565 | w(28) 0.323\n"}
+,{"stream_name":"stdout","time":10443.060134812,"data":"[ 170.0 phút] xong 73/100 epoch | val loss 31.067 | class GA 0.684 | concept GA 0.955 | overall GA 0.558 | w(28) 0.322\n"}
+,{"stream_name":"stdout","time":11043.107106471,"data":"[ 180.0 phút] xong 77/100 epoch | val loss 29.738 | class GA 0.740 | concept GA 0.962 | overall GA 0.600 | w(28) 0.320\n"}
+,{"stream_name":"stdout","time":11643.147216413,"data":"[ 190.0 phút] xong 82/100 epoch | val loss 30.495 | class GA 0.715 | concept GA 0.958 | overall GA 0.584 | w(28) 0.318\n"}
+,{"stream_name":"stdout","time":12243.193274618,"data":"[ 200.0 phút] xong 86/100 epoch | val loss 29.504 | class GA 0.732 | concept GA 0.961 | overall GA 0.610 | w(28) 0.316\n"}
+,{"stream_name":"stdout","time":12843.266005943,"data":"[ 210.0 phút] xong 90/100 epoch | val loss 29.152 | class GA 0.744 | concept GA 0.963 | overall GA 0.617 | w(28) 0.315\n"}
+,{"stream_name":"stdout","time":13443.367553995,"data":"[ 220.0 phút] xong 95/100 epoch | val loss 30.431 | class GA 0.714 | concept GA 0.959 | overall GA 0.611 | w(28) 0.313\n"}
+,{"stream_name":"stdout","time":14043.443133486,"data":"[ 230.0 phút] xong 99/100 epoch | val loss 28.829 | class GA 0.751 | concept GA 0.966 | overall GA 0.647 | w(28) 0.311\n"}
+,{"stream_name":"stdout","time":14103.45108116,"data":"/usr/local/lib/python3.13/dist-packages/pytorch_lightning/utilities/imports.py:22: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools\u003c81.\n"}
+,{"stream_name":"stdout","time":14103.451132445,"data":"  import pkg_resources\n"}
+,{"stream_name":"stdout","time":14103.451137595,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stdout","time":14103.451141332,"data":"I0000 00:00:1794569890.094494     232 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stdout","time":14103.451163001,"data":"Global seed set to 123\n"}
+,{"stream_name":"stdout","time":14103.45116903,"data":"4796 training set size\n"}
+,{"stream_name":"stdout","time":14103.451174523,"data":"1198 val set size\n"}
+,{"stream_name":"stdout","time":14103.451180247,"data":"5794 test set size\n"}
+,{"stream_name":"stdout","time":14103.451185876,"data":"/usr/local/lib/python3.13/dist-packages/pytorch_lightning/core/lightning.py:2067: DeprecationWarning: `torch.distributed._sharded_tensor` will be deprecated, use `torch.distributed._shard.sharded_tensor` instead\n"}
+,{"stream_name":"stdout","time":14103.451191794,"data":"  from torch.distributed._sharded_tensor import pre_load_state_dict_hook, state_dict_hook\n"}
+,{"stream_name":"stdout","time":14103.451197138,"data":"Using 16bit native Automatic Mixed Precision (AMP)\n"}
+,{"stream_name":"stdout","time":14103.451202412,"data":"/usr/local/lib/python3.13/dist-packages/pytorch_lightning/plugins/precision/native_amp.py:53: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.\n"}
+,{"stream_name":"stdout","time":14103.451208259,"data":"  scaler = torch.cuda.amp.GradScaler()\n"}
+,{"stream_name":"stdout","time":14103.451213133,"data":"GPU available: True, used: True\n"}
+,{"stream_name":"stdout","time":14103.45121808,"data":"TPU available: False, using: 0 TPU cores\n"}
+,{"stream_name":"stdout","time":14103.451222986,"data":"IPU available: False, using: 0 IPUs\n"}
+,{"stream_name":"stdout","time":14103.45122792,"data":"HPU available: False, using: 0 HPUs\n"}
+,{"stream_name":"stdout","time":14103.451238829,"data":"Missing logger folder: ./exp/2026-11-13_11-38-11/lightning_logs\n"}
+,{"stream_name":"stdout","time":14103.451242992,"data":"/usr/local/lib/python3.13/dist-packages/pytorch_lightning/callbacks/model_checkpoint.py:611: UserWarning: Checkpoint directory ./exp/2026-11-13_11-38-11 exists and is not empty.\n"}
+,{"stream_name":"stdout","time":14103.451246609,"data":"  rank_zero_warn(f\"Checkpoint directory {dirpath} exists and is not empty.\")\n"}
+,{"stream_name":"stdout","time":14103.451265233,"data":"LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]\n"}
+,{"stream_name":"stdout","time":14103.451271635,"data":"\n"}
+,{"stream_name":"stdout","time":14103.451277174,"data":"  | Name         | Type            | Params\n"}
+,{"stream_name":"stdout","time":14103.451282892,"data":"-------------------------------------------------\n"}
+,{"stream_name":"stdout","time":14103.451288532,"data":"0 | network      | GAECBM          | 44.9 M\n"}
+,{"stream_name":"stdout","time":14103.451293568,"data":"1 | loss_label   | EBMLoss_label   | 0     \n"}
+,{"stream_name":"stdout","time":14103.451298426,"data":"2 | loss_concept | EBMLoss_concept | 0     \n"}
+,{"stream_name":"stdout","time":14103.451303458,"data":"-------------------------------------------------\n"}
+,{"stream_name":"stdout","time":14103.451309915,"data":"44.9 M    Trainable params\n"}
+,{"stream_name":"stdout","time":14103.451323561,"data":"0         Non-trainable params\n"}
+,{"stream_name":"stdout","time":14103.45132747,"data":"44.9 M    Total params\n"}
+,{"stream_name":"stdout","time":14103.451331256,"data":"89.793    Total estimated model params size (MB)\n"}
+,{"stream_name":"stdout","time":14103.451335002,"data":"\n"}
+,{"stream_name":"stdout","time":14103.451338624,"data":"Train xong sau 3.85 giờ. Checkpoint: /kaggle/working/ECBM/exp/2026-11-13_11-38-11/last.ckpt\n"}
+,{"stream_name":"stdout","time":14104.764536563,"data":"Validation ở epoch cuối: {'accuracy_val_y_xy': 0.7304, 'accuracy_val_c': 0.9244, 'accuracy_val_c_overall': 0.4649, 'accuracy_val_y_post': 0.7354, 'accuracy_val_c_post': 0.9631, 'accuracy_val_c_overall_post': 0.6419, 'epoch_val_loss': 29.1569, 'epoch_val_loss_xy': 1.2986, 'epoch_val_loss_xc': 27.6384, 'epoch_val_loss_cy': 0.2199, 'epoch_val_loss_joint': 1.9287, 'epoch_val_loss_int': 0.457, 'epoch_val_loss_mono': 0.0001, 'gate_w_7': 0.7361, 'gate_w_28': 0.3106}\n"}
+,{"stream_name":"stdout","time":14111.281861603,"data":"28 nhóm; 47 tập nhóm can thiệp dùng chung | checkpoint ECBM gốc: không có\n"}
+,{"stream_name":"stdout","time":14117.311095134,"data":"Chấm thử GA-ECBM: {'class_accuracy': 0.0156, 'concept_accuracy': 0.4862, 'overall_concept_accuracy': 0.0} | AUC can thiệp 0.0198\n"}
+,{"stream_name":"stdout","time":14118.470395207,"data":"Cổng sau train: w(0) = 1, w(7) = 0.736, w(14) = 0.562, w(28) = 0.310\n"}
+,{"stream_name":"stdout","time":14134.569655721,"data":"GA-ECBM val: class 0.7362 | concept 0.9632 | overall 0.6419 | AUC can thiệp 0.8732 | đọc trực tiếp năng lượng: {'class_accuracy': 0.731218695640564, 'concept_accuracy': 0.9623479843139648}\n"}
+,{"stream_name":"stdout","time":14134.607908679,"data":"Không có checkpoint ECBM gốc trong Input: bỏ qua so sánh. Add Input → Your Work → ECBM_CUB.\n"}
+,{"stream_name":"stdout","time":14134.710709284,"data":"Mô hình Tập  Class acc  Concept acc  Overall concept acc  AUC can thiệp  Class acc khi xác minh 50% nhóm  Gây hại TB\n"}
+,{"stream_name":"stdout","time":14134.710760206,"data":"GA-ECBM val     0.7362       0.9632               0.6419         0.8732                           0.8856      0.0002\n"}
+,{"stream_name":"stdout","time":14135.370055171,"data":"\n"}
+,{"stream_name":"stdout","time":14135.370090196,"data":"Đã lưu /kaggle/working/ga_ecbm_cub_results/summary.json\n"}
+,{"stream_name":"stdout","time":14135.370097963,"data":"Các file trong Output: ['comparison.csv', 'intervention_curves.png', 'learning_curves.png', 'patches.diff', 'plan.json', 'results.json', 'smoke_train.log', 'state.json', 'summary.json', 'train_log.txt', 'train_stdout.log']\n"}
+,{"stream_name":"stderr","time":14141.072867122,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":14141.072920414,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":14141.303552694,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":14141.303610267,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":14142.18991228,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":14142.294841879,"data":"[NbConvertApp] Writing 400221 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":14144.738098026,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":14145.517970991,"data":"[NbConvertApp] Support files will be in __results___files/\n"}
+,{"stream_name":"stderr","time":14145.518058665,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":14145.51844777,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":14145.518705599,"data":"[NbConvertApp] Writing 592874 bytes to __results__.html\n"}
+]

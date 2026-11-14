@@ -1,0 +1,247 @@
+diff --git a/configs/cub.json b/configs/cub.json
+index c038937..420487d 100644
+--- a/configs/cub.json
++++ b/configs/cub.json
+@@ -22,7 +22,7 @@
+   "sweep": false,
+   "optim": "sgd",
+   "learning_rate": 0.01,
+-  "epochs": 300,
++  "epochs": 100,
+   "batch_size": 64,
+   "lr_c":1e-1,
+   "lr_y":1e-1,
+@@ -46,7 +46,7 @@
+   "ipus": null,
+   "log_gpu_memory": null,
+   "progress_bar_refresh_rate": null,
+-  "enable_progress_bar": true,
++  "enable_progress_bar": false,
+   "overfit_batches": 0.0,
+   "track_grad_norm": -1,
+   "check_val_every_n_epoch": 1,
+diff --git a/data/data_util.py b/data/data_util.py
+index 5dc7c90..1fa6cf4 100644
+--- a/data/data_util.py
++++ b/data/data_util.py
+@@ -5,7 +5,7 @@ import os
+ # CUB_DATA_DIR = "YOUR/CUB/DATA/DIR"
+ # AWA2_DATA_DIR = "YOUR/AWA2/DATA/DIR"
+ # CELEBA_DATA_DIR = "YOUR/CELEBA/DATA/DIR"
+-CUB_DATA_DIR = "/home/xxucb/data/pcbm_dataset/CUB"
++CUB_DATA_DIR = os.environ.get("CUB_DATA_DIR", "/home/xxucb/data/pcbm_dataset/CUB")
+ AWA2_DATA_DIR='/home/xxucb/data/pcbm_dataset/Animals_with_Attributes2'
+ CELEBA_DATA_DIR = "/home/xxucb/data/pcbm_dataset/celeba"
+ def get_dataset(args):
+diff --git a/main.py b/main.py
+index 9686e0b..9437f1d 100644
+--- a/main.py
++++ b/main.py
+@@ -1,7 +1,7 @@
+ import os
+ os.environ["CUDA_VISIBLE_DEVICES"]="0"
+ 
+-from LitModel import LitModel
++from ga_litmodel import GALitModel as LitModel
+ from pytorch_lightning import Trainer,seed_everything
+ from pytorch_lightning.callbacks import ModelCheckpoint
+ from pytorch_lightning.callbacks.early_stopping import EarlyStopping
+@@ -56,7 +56,7 @@ args=Namespace(**args)
+ 
+ if __name__ == '__main__':
+ 
+-    torch.use_deterministic_algorithms(True)
++    torch.use_deterministic_algorithms(True, warn_only=True)
+     seed_everything(args.random_seed, workers=True)
+     uuid = time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime())
+     exp_dir = os.path.join("./exp", uuid)
+@@ -81,4 +81,5 @@ if __name__ == '__main__':
+     # wandb_logger.watch(model,log_graph=False)
+     trainer.fit(model,train_dataloaders=train_loader, val_dataloaders=val_loader)
+     model.freeze()
+-    trainer.test(model=model,ckpt_path=None,dataloaders=test_loader)
+\ No newline at end of file
++    if os.environ.get('ECBM_RUN_TEST') == '1':
++        trainer.test(model=model,ckpt_path=None,dataloaders=test_loader)
+\ No newline at end of file
+
+# ===== ga_ecbm.py (file mới) =====
+"""GA-ECBM (Gated Additive ECBM) đặt trong code ECBM gốc (xmed-lab/ECBM, commit d38c43a).
+
+Giữ nguyên của tác giả: backbone ResNet101, nhánh ảnh → nhãn E_class và nhánh ảnh → concept E_concept của EBM_GL.
+Thay: E_global(c, y) = −(b_y + Σ_k θ_{y,k}·c_k), tức bảng điểm cộng tính thay cho MLP trên cả vector concept.
+Nhờ cộng tính, p(y | x, concept đã biết) và p(c_k | x, …) tính chính xác bằng công thức đóng, không cần tối ưu gradient.
+Khi can thiệp k nhóm concept, nhánh ảnh nhân với cổng w(k) = exp(−Σ_{j≤k} softplus(a_j)), w(0) = 1.
+"""
+import os
+
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+from data.cub import CONCEPT_GROUP_MAP
+from networks.EBM import ECBM
+
+GROUPS = [list(indices) for indices in CONCEPT_GROUP_MAP.values()]   # 28 nhóm, như phần can thiệp theo nhóm của tác giả
+GATE_INIT = float(os.environ.get("GA_GATE_INIT", "-3.1"))             # softplus(−3.1) ≈ 0.044 → w(28) ≈ 0.29
+
+
+class GAECBM(ECBM):
+    def __init__(self, args, emb_size, cpt_size, hid_size, n_classes):
+        super().__init__(args, emb_size=emb_size, cpt_size=cpt_size, hid_size=hid_size, n_classes=n_classes)
+        head = self.energy_model
+        del head.concept_proj, head.fc_c, head.classifier_cy        # MLP E_global của tác giả: không dùng nữa
+        self.theta = nn.Parameter(torch.zeros(n_classes, cpt_size))  # θ_{y,k}: điểm của concept k = 1 cho loài y
+        self.label_bias = nn.Parameter(torch.zeros(n_classes))       # b_y
+        self.gate_steps = nn.Parameter(torch.full((len(GROUPS),), GATE_INIT))
+        group_of = torch.zeros(cpt_size, dtype=torch.long)
+        for g, indices in enumerate(GROUPS):
+            group_of[indices] = g
+        self.register_buffer("group_of", group_of, persistent=False)
+
+    def energies(self, images):
+        """E_class [B, C] và E_concept [B, K, 2] của tác giả; E_concept[..., s] là năng lượng của trạng thái s."""
+        emb = self.backbone(images)
+        e_class, _, e_concept = self.energy_model(emb, None, True, use_cy=False)
+        return e_class, e_concept
+
+    def gate(self, verified_groups):
+        w = torch.exp(-torch.cat([self.gate_steps.new_zeros(1), torch.cumsum(F.softplus(self.gate_steps), 0)]))
+        return w[verified_groups]
+
+    def global_score(self, concepts):
+        """−E_global(c, y) cho mọi y: [B, C]."""
+        return self.label_bias + concepts.float() @ self.theta.t()
+
+    def posterior(self, e_class, e_concept, mask=None, values=None, class_weight=None):
+        """log p(y | x, c_S) [B, C] và p(c_k = 1 | x, c_S) [B, K]; tính ở FP32."""
+        e_class, e_concept = e_class.float(), e_concept.float()
+        t1 = -e_concept[..., 1][:, None, :] + self.theta[None]          # [B, C, K]
+        t0 = (-e_concept[..., 0])[:, None, :].expand_as(t1)
+        per_concept = torch.logaddexp(t0, t1)
+        p1_given_y = torch.sigmoid(t1 - t0)
+        if mask is not None:
+            observed = torch.where(values[:, None, :].bool(), t1, t0)
+            per_concept = torch.where(mask[:, None, :], observed, per_concept)
+            p1_given_y = torch.where(mask[:, None, :], values[:, None, :].float(), p1_given_y)
+        weight = 1.0 if class_weight is None else class_weight.float()[:, None]
+        log_p_y = (-weight * e_class + self.label_bias[None] + per_concept.sum(-1)).log_softmax(-1)
+        return log_p_y, (log_p_y.exp()[:, :, None] * p1_given_y).sum(1)
+
+
+def ga_losses(model, loss_label, loss_concept, images, labels, concepts, weights=(3, 1, 1)):
+    """Loss của GA-ECBM cho một batch.
+
+    Trả về (loss train, loss validation kiểu tác giả, các thành phần, (e_class, e_concept, concept sạch)).
+    Loss gốc 3 : 1 : 1 gọi đúng hàm loss và cy_augment của tác giả. Trong forward gốc, cy_augment sửa thẳng tensor concept
+    của batch, nên L_xc của tác giả cũng tính trên concept đã xáo trộn; ở đây giữ nguyên hành vi đó cho phần loss gốc.
+    Ba loss mới dùng concept sạch (bản sao lấy trước khi xáo trộn).
+    """
+    clean = concepts.clone()
+    head = model.energy_model
+    e_class, e_concept = model.energies(images)
+    perturbed = head.cy_augment(c_gt=concepts.unsqueeze(-1), permute_ratio=head.cy_concept_perturb_prob,
+                                permute_prob=head.cy_sample_perturb_prob).squeeze(-1)
+    loss_xy = loss_label(e_class, labels)
+    loss_cy = loss_label(-model.global_score(perturbed), labels)       # EBMLoss_label nhận năng lượng
+    loss_xc = loss_concept(e_concept, concepts)
+    w_xy, w_xc, w_cy = weights
+    base = w_xy * loss_xy + w_xc * loss_xc + w_cy * loss_cy
+
+    device_type = "cuda" if images.is_cuda else "cpu"
+    with torch.autocast(device_type=device_type, enabled=False):
+        count, n_groups = len(labels), len(GROUPS)
+        log_p_y, p_c = model.posterior(e_class, e_concept)
+        joint = F.nll_loss(log_p_y, labels) + F.binary_cross_entropy(p_c.clamp(1e-6, 1 - 1e-6), clean.float())
+        groups = torch.rand(count, n_groups, device=images.device) < torch.rand(count, 1, device=images.device)
+        drop = torch.rand(count, device=images.device) < 0.5                  # nửa số ca tắt hẳn nhánh ảnh
+        k = groups.sum(1)
+        w_k = torch.where(drop, torch.zeros_like(k, dtype=torch.float), model.gate(k))
+        log_int, _ = model.posterior(e_class, e_concept, groups[:, model.group_of], clean, w_k)
+        loss_int = F.nll_loss(log_int, labels, reduction="none")
+        extra = torch.multinomial((~groups).float() + 1e-9, 1).squeeze(1)      # xác minh thêm 1 nhóm
+        groups_more = groups.clone()
+        groups_more[torch.arange(count, device=images.device), extra] = True
+        k_more = groups_more.sum(1)
+        w_more = torch.where(drop, torch.zeros_like(k_more, dtype=torch.float), model.gate(k_more))
+        log_more, _ = model.posterior(e_class, e_concept, groups_more[:, model.group_of], clean, w_more)
+        mono = F.relu(F.nll_loss(log_more, labels, reduction="none") - loss_int).mean()
+    total = base + joint + loss_int.mean() + mono
+    val_like = loss_xc + loss_xy + loss_cy                                   # như validation_step của tác giả
+    parts = {"xy": loss_xy, "xc": loss_xc, "cy": loss_cy, "joint": joint, "int": loss_int.mean(), "mono": mono}
+    return total, val_like, parts, (e_class, e_concept, clean, log_p_y, p_c)
+
+# ===== ga_litmodel.py (file mới) =====
+"""LightningModule của GA-ECBM: kế thừa LitModel của tác giả, giữ nguyên optimizer, scheduler và cách log.
+
+main.py chỉ đổi một dòng import để dùng lớp này; mọi thứ khác (dữ liệu, sampler, ModelCheckpoint, số epoch) giữ nguyên.
+"""
+import logging
+import os
+
+import torch
+
+from LitModel import LitModel
+from ga_ecbm import GATE_INIT, GROUPS, GAECBM, ga_losses
+
+
+def _accuracy(pred, target):
+    return (pred == target).float().mean()
+
+
+class GALitModel(LitModel):
+    def __init__(self, logdir, args):
+        super().__init__(logdir, args)
+        self.network = GAECBM(args=args, emb_size=args.emb_size, cpt_size=args.cpt_size, hid_size=args.hid_size,
+                              n_classes=args.n_classes)
+        logging.info("GA-ECBM: gate_init=%s, groups=%d", GATE_INIT, len(GROUPS))   # dấu để notebook nhận ra lần chạy GA
+
+    def _step(self, batch, stage):
+        images, labels, concepts = batch
+        total, val_like, parts, (e_class, e_concept, clean, log_p_y, p_c) = ga_losses(
+            self.network, self.loss_label, self.loss_concept, images, labels, concepts,
+            (self.lambda_xy, self.lambda_xc, self.lambda_cy))
+        pred_c_direct = torch.argmin(e_concept, 2)
+        pred_c_post = (p_c > 0.5).long()
+        values = {
+            # như tác giả: đọc trực tiếp năng lượng, concept so với tensor của batch (đã bị cy_augment sửa)
+            f"accuracy_{stage}_y_xy": _accuracy(torch.argmin(e_class, 1), labels),
+            f"accuracy_{stage}_c": _accuracy(pred_c_direct, concepts),
+            f"accuracy_{stage}_c_overall": (pred_c_direct == concepts).all(1).float().mean(),
+            # GA-ECBM: suy luận chính xác, so với concept sạch
+            f"accuracy_{stage}_y_post": _accuracy(log_p_y.argmax(1), labels),
+            f"accuracy_{stage}_c_post": _accuracy(pred_c_post, clean),
+            f"accuracy_{stage}_c_overall_post": (pred_c_post == clean).all(1).float().mean(),
+        }
+        for name, value in values.items():
+            self.log(name, value, on_epoch=True, on_step=False)
+        return total, val_like, parts, values
+
+    def training_step(self, batch, batch_idx):
+        total, _, parts, _ = self._step(batch, "train")
+        self.log("epoch_loss", total, on_epoch=True)                 # scheduler của tác giả theo dõi epoch_loss_epoch
+        for name, value in parts.items():
+            self.log(f"epoch_loss_{name}", value, on_epoch=True)
+        if batch_idx == 0:
+            w = self.network.gate(torch.tensor([0, 7, 14, 28], device=self.device))
+            self.log("gate_w_7", w[1], on_epoch=True, on_step=False)
+            self.log("gate_w_28", w[3], on_epoch=True, on_step=False)
+        return total
+
+    def validation_step(self, batch, batch_idx):
+        _, val_like, parts, _ = self._step(batch, "val")
+        self.log("epoch_val_loss", val_like, on_epoch=True)         # ModelCheckpoint theo dõi khóa này, như tác giả
+        for name, value in parts.items():
+            self.log(f"epoch_val_loss_{name}", value, on_epoch=True)
+        return val_like
+
+    def test_step(self, batch, batch_idx):
+        _, _, _, values = self._step(batch, "test")
+        return [values["accuracy_test_c_overall_post"].item(), values["accuracy_test_c_post"].item(),
+                values["accuracy_test_y_xy"].item(), values["accuracy_test_y_post"].item()]
+
+    def test_epoch_end(self, outputs):
+        mean = torch.tensor(outputs).mean(0)
+        for name, value in zip(("accuracy_test_c_overall_post", "accuracy_test_c_post", "accuracy_test_y_xy",
+                                "accuracy_test_y_post"), mean):
+            logging.info("%s: %s", name, float(value))

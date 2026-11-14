@@ -1,0 +1,28 @@
+{
+  "comparison": "D = GA-ECBM end-to-end vs A0 = ECBM gốc tái lập (cùng code, dữ liệu, công thức train, 100 epoch, 1 seed)",
+  "epochs": 100,
+  "gate_init": -3.1,
+  "intervention_ratios": [
+    0.0,
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9,
+    1.0
+  ],
+  "intervention_repeats": 5,
+  "seed": 123,
+  "criteria": {
+    "auc_gain": 0.02,
+    "max_class_drop": 0.005,
+    "max_concept_drop": 0.002,
+    "max_overall_concept_drop": 0.01
+  },
+  "decision_split": "validation",
+  "test_evaluated": true
+}

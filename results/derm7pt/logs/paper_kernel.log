@@ -1,0 +1,178 @@
+[{"stream_name":"stderr","time":6.64982816,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":6.649879872,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":7.6039059380000005,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.603942436,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.603947483,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.603950033,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.197795345,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.197821525,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.197831652,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.197834646,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":24.039039593,"data":"Thiết bị tính toán: cuda\n"}
+,{"stream_name":"stdout","time":24.039074906,"data":"Danh sách Random Seeds sẽ đánh giá: [42, 123, 2026, 11, 222, 3333]\n"}
+,{"stream_name":"stdout","time":24.039080593,"data":"Kết quả và Checkpoint sẽ lưu tại: /kaggle/working/ecbm_derm7pt_paper\n"}
+,{"stream_name":"stdout","time":24.238176595,"data":"Đang tìm kiếm dữ liệu Derm7pt trong: ['/kaggle/input', '/kaggle/working']...\n"}
+,{"stream_name":"stdout","time":26.071359194,"data":"✓ Tìm thấy file metadata Derm7pt tại: /kaggle/input/datasets/ehehee/derm7pt-private/meta/meta.csv\n"}
+,{"stream_name":"stdout","time":26.071398715,"data":"✓ Tìm thấy đầy đủ file phân chia index: /kaggle/input/datasets/ehehee/derm7pt-private/meta\n"}
+,{"stream_name":"stdout","time":26.233337042,"data":"✓ Đang lập chỉ mục ảnh từ thư mục: /kaggle/input/datasets/ehehee/derm7pt-private/images\n"}
+,{"stream_name":"stdout","time":26.233366589,"data":"✓ Đã lập chỉ mục 2013 ảnh.\n"}
+,{"stream_name":"stdout","time":26.233371422,"data":"✓ Nạp dữ liệu thành công! Tổng 1011 ca:\n"}
+,{"stream_name":"stdout","time":26.233375098,"data":"  - Train     : 413 ca (Melanoma: 90)\n"}
+,{"stream_name":"stdout","time":26.233378313,"data":"  - Validation: 203 ca (Melanoma: 61)\n"}
+,{"stream_name":"stdout","time":26.233381902,"data":"  - Test      : 395 ca (Melanoma: 101)\n"}
+,{"stream_name":"stdout","time":26.233385371,"data":"✓ Đã khởi tạo xong DataLoaders (Train: 13 batches, Val: 7, Test: 13)!\n"}
+,{"stream_name":"stdout","time":26.233389096,"data":"✓ Nhãn melanoma đúng: train/val/test = [90, 61, 101]\n"}
+,{"stream_name":"stdout","time":26.233393347,"data":"✓ Đúng split chính thức Derm7pt (413/203/395; melanoma 90/61/101)\n"}
+,{"stream_name":"stdout","time":26.980476921,"data":"Downloading: \"https://download.pytorch.org/models/resnet101-cd907fc2.pth\" to /root/.cache/torch/hub/checkpoints/resnet101-cd907fc2.pth\n"}
+,{"stream_name":"stderr","time":26.981511467,"data":"\r  0%|          | 0.00/171M [00:00\u003c?, ?B/s]\n"}
+,{"stream_name":"stderr","time":27.085098303,"data":"\r  0%|          | 0.00/171M [00:00\u003c?, ?B/s]\r 14%|█▍        | 23.8M/171M [00:00\u003c00:00, 248MB/s]\n"}
+,{"stream_name":"stderr","time":27.212365655,"data":"\r 14%|█▍        | 23.8M/171M [00:00\u003c00:00, 248MB/s]\r 28%|██▊       | 47.5M/171M [00:00\u003c00:00, 212MB/s]\n"}
+,{"stream_name":"stderr","time":27.325033803,"data":"\r 28%|██▊       | 47.5M/171M [00:00\u003c00:00, 212MB/s]\r 40%|███▉      | 68.1M/171M [00:00\u003c00:00, 203MB/s]\n"}
+,{"stream_name":"stderr","time":27.431547658,"data":"\r 40%|███▉      | 68.1M/171M [00:00\u003c00:00, 203MB/s]\r 51%|█████▏    | 87.8M/171M [00:00\u003c00:00, 199MB/s]\n"}
+,{"stream_name":"stderr","time":27.535091589,"data":"\r 51%|█████▏    | 87.8M/171M [00:00\u003c00:00, 199MB/s]\r 63%|██████▎   | 107M/171M [00:00\u003c00:00, 197MB/s] \n"}
+,{"stream_name":"stderr","time":27.637454532,"data":"\r 63%|██████▎   | 107M/171M [00:00\u003c00:00, 197MB/s] \r 74%|███████▎  | 126M/171M [00:00\u003c00:00, 196MB/s]\n"}
+,{"stream_name":"stderr","time":27.741175191,"data":"\r 74%|███████▎  | 126M/171M [00:00\u003c00:00, 196MB/s]\r 85%|████████▍ | 144M/171M [00:00\u003c00:00, 194MB/s]\n"}
+,{"stream_name":"stderr","time":27.844556609,"data":"\r 85%|████████▍ | 144M/171M [00:00\u003c00:00, 194MB/s]\r 96%|█████████▌| 163M/171M [00:00\u003c00:00, 192MB/s]\n"}
+,{"stream_name":"stderr","time":27.88201667,"data":"\r 96%|█████████▌| 163M/171M [00:00\u003c00:00, 192MB/s]\r100%|██████████| 171M/171M [00:00\u003c00:00, 199MB/s]\n"}
+,{"stream_name":"stderr","time":27.941613499,"data":"\r100%|██████████| 171M/171M [00:00\u003c00:00, 199MB/s]\n"}
+,{"stream_name":"stderr","time":27.941647132,"data":"\n"}
+,{"stream_name":"stderr","time":27.941651629,"data":"\n"}
+,{"stream_name":"stdout","time":28.704603453,"data":"✓ Khởi tạo thành công mô hình ECBM với backbone resnet101 (2048 dims)!\n"}
+,{"stream_name":"stdout","time":29.345826517,"data":"✓ Đã định nghĩa kiến trúc Categorical ECBM (resnet101) trên cuda!\n"}
+,{"stream_name":"stdout","time":29.423844696,"data":"✓ Đã định nghĩa Gated Additive ECBM\n"}
+,{"stream_name":"stdout","time":29.509776166,"data":"✓ Đã định nghĩa cách chấm chung; DeLong khớp sklearn\n"}
+,{"stream_name":"stdout","time":431.624489566,"data":"  baseline seed 42: 27 epoch, val loss tốt nhất 7.7474, 6.7 phút\n"}
+,{"stream_name":"stdout","time":846.459718696,"data":"  gated seed 42: 27 epoch, val loss tốt nhất 7.9382, 6.2 phút\n"}
+,{"stream_name":"stdout","time":854.839184344,"data":"seed 42 A_joint  val : AUC 0.8193 | F1 0.7043 | concept 0.6777/0.3914 | F1 sửa 1–3 0.7178 | hại/giúp 1–3 0.0000/0.0148 | sửa 7 F1/AUC 0.7178/0.8207\n"}
+,{"stream_name":"stdout","time":854.840113233,"data":"seed 42 A_joint  test: AUC 0.8568 | F1 0.7515 | concept 0.6814/0.3866 | F1 sửa 1–3 0.7472 | hại/giúp 1–3 0.0114/0.0043 | sửa 7 F1/AUC 0.7421/0.8575\n"}
+,{"stream_name":"stdout","time":854.840919835,"data":"seed 42 A_author val : AUC 0.8193 | F1 0.7043 | concept 0.6777/0.3914 | F1 sửa 1–3 0.7353 | hại/giúp 1–3 0.0515/0.0810 | sửa 7 F1/AUC 0.8125/0.9247\n"}
+,{"stream_name":"stdout","time":854.841792399,"data":"seed 42 A_author test: AUC 0.8568 | F1 0.7515 | concept 0.6814/0.3866 | F1 sửa 1–3 0.7692 | hại/giúp 1–3 0.0443/0.0586 | sửa 7 F1/AUC 0.8265/0.9251\n"}
+,{"stream_name":"stdout","time":854.842502687,"data":"seed 42 D        val : AUC 0.8167 | F1 0.7125 | concept 0.6756/0.4030 | F1 sửa 1–3 0.7485 | hại/giúp 1–3 0.0037/0.0368 | sửa 7 F1/AUC 0.8289/0.9345\n"}
+,{"stream_name":"stdout","time":854.84327754,"data":"seed 42 D        test: AUC 0.8283 | F1 0.7403 | concept 0.6807/0.3969 | F1 sửa 1–3 0.7611 | hại/giúp 1–3 0.0134/0.0349 | sửa 7 F1/AUC 0.8371/0.9347\n"}
+,{"stream_name":"stdout","time":1245.866668244,"data":"  baseline seed 123: 30 epoch, val loss tốt nhất 7.9198, 6.5 phút\n"}
+,{"stream_name":"stdout","time":1590.587581179,"data":"  gated seed 123: 23 epoch, val loss tốt nhất 7.5553, 5.5 phút\n"}
+,{"stream_name":"stdout","time":1599.243455182,"data":"seed 123 A_joint  val : AUC 0.8017 | F1 0.7118 | concept 0.7030/0.4152 | F1 sửa 1–3 0.7118 | hại/giúp 1–3 0.0000/0.0000 | sửa 7 F1/AUC 0.7118/0.8024\n"}
+,{"stream_name":"stdout","time":1599.244404351,"data":"seed 123 A_joint  test: AUC 0.8283 | F1 0.7176 | concept 0.6958/0.4057 | F1 sửa 1–3 0.7202 | hại/giúp 1–3 0.0000/0.0027 | sửa 7 F1/AUC 0.7105/0.8289\n"}
+,{"stream_name":"stdout","time":1599.245435764,"data":"seed 123 A_author val : AUC 0.8017 | F1 0.7118 | concept 0.7030/0.4152 | F1 sửa 1–3 0.7437 | hại/giúp 1–3 0.0905/0.0993 | sửa 7 F1/AUC 0.7989/0.9175\n"}
+,{"stream_name":"stdout","time":1599.24652693,"data":"seed 123 A_author test: AUC 0.8283 | F1 0.7176 | concept 0.6958/0.4057 | F1 sửa 1–3 0.7496 | hại/giúp 1–3 0.0768/0.0888 | sửa 7 F1/AUC 0.8180/0.9164\n"}
+,{"stream_name":"stdout","time":1599.247649709,"data":"seed 123 D        val : AUC 0.8505 | F1 0.7397 | concept 0.6707/0.3707 | F1 sửa 1–3 0.7639 | hại/giúp 1–3 0.0239/0.0479 | sửa 7 F1/AUC 0.8274/0.9344\n"}
+,{"stream_name":"stdout","time":1599.248818722,"data":"seed 123 D        test: AUC 0.8338 | F1 0.7194 | concept 0.6611/0.3608 | F1 sửa 1–3 0.7522 | hại/giúp 1–3 0.0184/0.0414 | sửa 7 F1/AUC 0.8573/0.9311\n"}
+,{"stream_name":"stdout","time":1912.266568124,"data":"  baseline seed 2026: 24 epoch, val loss tốt nhất 8.1022, 5.2 phút\n"}
+,{"stream_name":"stdout","time":2280.296885627,"data":"  gated seed 2026: 25 epoch, val loss tốt nhất 8.0751, 5.9 phút\n"}
+,{"stream_name":"stdout","time":2288.497617329,"data":"seed 2026 A_joint  val : AUC 0.8248 | F1 0.7123 | concept 0.6664/0.3161 | F1 sửa 1–3 0.7155 | hại/giúp 1–3 0.0000/0.0035 | sửa 7 F1/AUC 0.7168/0.8312\n"}
+,{"stream_name":"stdout","time":2288.498648348,"data":"seed 2026 A_joint  test: AUC 0.8472 | F1 0.7330 | concept 0.6709/0.3173 | F1 sửa 1–3 0.7323 | hại/giúp 1–3 0.0005/0.0000 | sửa 7 F1/AUC 0.7330/0.8593\n"}
+,{"stream_name":"stdout","time":2288.499555328,"data":"seed 2026 A_author val : AUC 0.8248 | F1 0.7123 | concept 0.6664/0.3161 | F1 sửa 1–3 0.7714 | hại/giúp 1–3 0.0477/0.1099 | sửa 7 F1/AUC 0.8389/0.9264\n"}
+,{"stream_name":"stdout","time":2288.500579595,"data":"seed 2026 A_author test: AUC 0.8472 | F1 0.7330 | concept 0.6709/0.3173 | F1 sửa 1–3 0.7725 | hại/giúp 1–3 0.0531/0.1036 | sửa 7 F1/AUC 0.8314/0.9189\n"}
+,{"stream_name":"stdout","time":2288.501542659,"data":"seed 2026 D        val : AUC 0.8308 | F1 0.7352 | concept 0.6728/0.3815 | F1 sửa 1–3 0.7540 | hại/giúp 1–3 0.0142/0.0342 | sửa 7 F1/AUC 0.8326/0.9240\n"}
+,{"stream_name":"stdout","time":2288.502507962,"data":"seed 2026 D        test: AUC 0.8621 | F1 0.7657 | concept 0.6738/0.3734 | F1 sửa 1–3 0.7881 | hại/giúp 1–3 0.0160/0.0433 | sửa 7 F1/AUC 0.8545/0.9415\n"}
+,{"stream_name":"stdout","time":2624.760020675,"data":"  baseline seed 11: 26 epoch, val loss tốt nhất 7.9039, 5.6 phút\n"}
+,{"stream_name":"stdout","time":2936.257045525,"data":"  gated seed 11: 21 epoch, val loss tốt nhất 8.0226, 4.9 phút\n"}
+,{"stream_name":"stdout","time":2944.591045029,"data":"seed 11 A_joint  val : AUC 0.8019 | F1 0.7418 | concept 0.6840/0.3870 | F1 sửa 1–3 0.7405 | hại/giúp 1–3 0.0014/0.0000 | sửa 7 F1/AUC 0.7372/0.8026\n"}
+,{"stream_name":"stdout","time":2944.592020815,"data":"seed 11 A_joint  test: AUC 0.8327 | F1 0.7259 | concept 0.6803/0.3750 | F1 sửa 1–3 0.7270 | hại/giúp 1–3 0.0000/0.0012 | sửa 7 F1/AUC 0.7308/0.8335\n"}
+,{"stream_name":"stdout","time":2944.592970975,"data":"seed 11 A_author val : AUC 0.8019 | F1 0.7418 | concept 0.6840/0.3870 | F1 sửa 1–3 0.7557 | hại/giúp 1–3 0.0722/0.0731 | sửa 7 F1/AUC 0.8019/0.9270\n"}
+,{"stream_name":"stdout","time":2944.59377897,"data":"seed 11 A_author test: AUC 0.8327 | F1 0.7259 | concept 0.6803/0.3750 | F1 sửa 1–3 0.7503 | hại/giúp 1–3 0.0805/0.0900 | sửa 7 F1/AUC 0.8179/0.9118\n"}
+,{"stream_name":"stdout","time":2944.594544313,"data":"seed 11 D        val : AUC 0.8264 | F1 0.7577 | concept 0.6242/0.2482 | F1 sửa 1–3 0.7906 | hại/giúp 1–3 0.0284/0.0618 | sửa 7 F1/AUC 0.8431/0.9374\n"}
+,{"stream_name":"stdout","time":2944.595594565,"data":"seed 11 D        test: AUC 0.8395 | F1 0.7413 | concept 0.6304/0.2508 | F1 sửa 1–3 0.7747 | hại/giúp 1–3 0.0334/0.0696 | sửa 7 F1/AUC 0.8337/0.9340\n"}
+,{"stream_name":"stdout","time":3256.248264931,"data":"  baseline seed 222: 24 epoch, val loss tốt nhất 8.1267, 5.2 phút\n"}
+,{"stream_name":"stdout","time":3624.186683873,"data":"  gated seed 222: 25 epoch, val loss tốt nhất 7.8183, 5.9 phút\n"}
+,{"stream_name":"stdout","time":3632.502400544,"data":"seed 222 A_joint  val : AUC 0.7934 | F1 0.7238 | concept 0.6700/0.3551 | F1 sửa 1–3 0.7229 | hại/giúp 1–3 0.0010/0.0000 | sửa 7 F1/AUC 0.7193/0.7950\n"}
+,{"stream_name":"stdout","time":3632.503407812,"data":"seed 222 A_joint  test: AUC 0.8262 | F1 0.7079 | concept 0.6781/0.3663 | F1 sửa 1–3 0.7079 | hại/giúp 1–3 0.0000/0.0000 | sửa 7 F1/AUC 0.7079/0.8273\n"}
+,{"stream_name":"stdout","time":3632.504509351,"data":"seed 222 A_author val : AUC 0.7934 | F1 0.7238 | concept 0.6700/0.3551 | F1 sửa 1–3 0.7106 | hại/giúp 1–3 0.1067/0.1013 | sửa 7 F1/AUC 0.7989/0.9152\n"}
+,{"stream_name":"stdout","time":3632.505697096,"data":"seed 222 A_author test: AUC 0.8262 | F1 0.7079 | concept 0.6781/0.3663 | F1 sửa 1–3 0.7476 | hại/giúp 1–3 0.0727/0.1144 | sửa 7 F1/AUC 0.8059/0.9155\n"}
+,{"stream_name":"stdout","time":3632.506934187,"data":"seed 222 D        val : AUC 0.8132 | F1 0.7195 | concept 0.6756/0.3776 | F1 sửa 1–3 0.7307 | hại/giúp 1–3 0.0380/0.0433 | sửa 7 F1/AUC 0.8174/0.9260\n"}
+,{"stream_name":"stdout","time":3632.508182265,"data":"seed 222 D        test: AUC 0.8584 | F1 0.7631 | concept 0.6759/0.3826 | F1 sửa 1–3 0.7897 | hại/giúp 1–3 0.0162/0.0340 | sửa 7 F1/AUC 0.8509/0.9411\n"}
+,{"stream_name":"stdout","time":3959.073650378,"data":"  baseline seed 3333: 25 epoch, val loss tốt nhất 8.3746, 5.4 phút\n"}
+,{"stream_name":"stdout","time":4414.441490221,"data":"  gated seed 3333: 31 epoch, val loss tốt nhất 8.2431, 7.3 phút\n"}
+,{"stream_name":"stdout","time":4423.194823303,"data":"seed 3333 A_joint  val : AUC 0.7705 | F1 0.6983 | concept 0.6636/0.3180 | F1 sửa 1–3 0.6894 | hại/giúp 1–3 0.0131/0.0033 | sửa 7 F1/AUC 0.6951/0.7730\n"}
+,{"stream_name":"stdout","time":4423.196039658,"data":"seed 3333 A_joint  test: AUC 0.8321 | F1 0.7381 | concept 0.6669/0.3193 | F1 sửa 1–3 0.7375 | hại/giúp 1–3 0.0012/0.0008 | sửa 7 F1/AUC 0.7472/0.8339\n"}
+,{"stream_name":"stdout","time":4423.197962014,"data":"seed 3333 A_author val : AUC 0.7705 | F1 0.6983 | concept 0.6636/0.3180 | F1 sửa 1–3 0.7316 | hại/giúp 1–3 0.0651/0.0826 | sửa 7 F1/AUC 0.8353/0.9252\n"}
+,{"stream_name":"stdout","time":4423.198172704,"data":"seed 3333 A_author test: AUC 0.8321 | F1 0.7381 | concept 0.6669/0.3193 | F1 sửa 1–3 0.7489 | hại/giúp 1–3 0.0838/0.0849 | sửa 7 F1/AUC 0.8006/0.9146\n"}
+,{"stream_name":"stdout","time":4423.199112815,"data":"seed 3333 D        val : AUC 0.8290 | F1 0.7132 | concept 0.6685/0.4115 | F1 sửa 1–3 0.7516 | hại/giúp 1–3 0.0200/0.0542 | sửa 7 F1/AUC 0.8431/0.9300\n"}
+,{"stream_name":"stdout","time":4423.200111809,"data":"seed 3333 D        test: AUC 0.8108 | F1 0.6959 | concept 0.6680/0.4053 | F1 sửa 1–3 0.7257 | hại/giúp 1–3 0.0156/0.0497 | sửa 7 F1/AUC 0.8593/0.9233\n"}
+,{"stream_name":"stdout","time":4423.60106144,"data":"\n"}
+,{"stream_name":"stdout","time":4423.60110406,"data":"===== VAL — Bảng 1: chưa can thiệp (6 seed) =====\n"}
+,{"stream_name":"stdout","time":4423.601108826,"data":"Mô hình           Acc          BAcc      Macro F1          Sens          Spec           AUC   Concept acc Concept Macro F1     Đúng cả 7\n"}
+,{"stream_name":"stdout","time":4423.601111912,"data":"   ECBM 0.764 ± 0.014 0.713 ± 0.017 0.715 ± 0.016 0.587 ± 0.042 0.839 ± 0.024 0.802 ± 0.019 0.677 ± 0.015    0.364 ± 0.041 0.080 ± 0.017\n"}
+,{"stream_name":"stdout","time":4423.601114814,"data":"GA-ECBM 0.772 ± 0.015 0.732 ± 0.024 0.730 ± 0.018 0.634 ± 0.079 0.831 ± 0.043 0.828 ± 0.013 0.665 ± 0.020    0.365 ± 0.060 0.070 ± 0.009\n"}
+,{"stream_name":"stdout","time":4423.60111768,"data":"\n"}
+,{"stream_name":"stdout","time":4423.601120001,"data":"===== VAL — Bảng 2: can thiệp =====\n"}
+,{"stream_name":"stdout","time":4423.601122586,"data":"                      Mô hình    F1 sửa 1–3   AUC sửa 1–3      Giúp 1–3   Gây hại 1–3      F1 sửa 7     AUC sửa 7 Giúp TB k=1–7 Gây hại TB k=1–7\n"}
+,{"stream_name":"stdout","time":4423.601125589,"data":"                         ECBM 0.716 ± 0.017 0.803 ± 0.020 0.004 ± 0.006 0.003 ± 0.005 0.716 ± 0.014 0.804 ± 0.020 0.003 ± 0.006    0.002 ± 0.003\n"}
+,{"stream_name":"stdout","time":4423.601128246,"data":"ECBM (can thiệp theo tác giả) 0.741 ± 0.021 0.829 ± 0.014 0.091 ± 0.014 0.072 ± 0.023 0.814 ± 0.018 0.923 ± 0.005 0.122 ± 0.014    0.074 ± 0.018\n"}
+,{"stream_name":"stdout","time":4423.601130974,"data":"                      GA-ECBM 0.757 ± 0.020 0.857 ± 0.012 0.046 ± 0.011 0.021 ± 0.012 0.832 ± 0.010 0.931 ± 0.005 0.081 ± 0.006    0.027 ± 0.009\n"}
+,{"stream_name":"stdout","time":4423.601133614,"data":"\n"}
+,{"stream_name":"stdout","time":4423.601135863,"data":"===== TEST — Bảng 1: chưa can thiệp (6 seed) =====\n"}
+,{"stream_name":"stdout","time":4423.601138346,"data":"Mô hình           Acc          BAcc      Macro F1          Sens          Spec           AUC   Concept acc Concept Macro F1     Đúng cả 7\n"}
+,{"stream_name":"stdout","time":4423.601141062,"data":"   ECBM 0.787 ± 0.018 0.737 ± 0.017 0.729 ± 0.015 0.634 ± 0.055 0.840 ± 0.037 0.837 ± 0.012 0.679 ± 0.010    0.362 ± 0.036 0.072 ± 0.010\n"}
+,{"stream_name":"stdout","time":4423.601143684,"data":"GA-ECBM 0.790 ± 0.023 0.752 ± 0.032 0.738 ± 0.027 0.673 ± 0.081 0.830 ± 0.038 0.839 ± 0.019 0.665 ± 0.018    0.362 ± 0.057 0.081 ± 0.011\n"}
+,{"stream_name":"stdout","time":4423.601146338,"data":"\n"}
+,{"stream_name":"stdout","time":4423.601148679,"data":"===== TEST — Bảng 2: can thiệp =====\n"}
+,{"stream_name":"stdout","time":4423.601151277,"data":"                      Mô hình    F1 sửa 1–3   AUC sửa 1–3      Giúp 1–3   Gây hại 1–3      F1 sửa 7     AUC sửa 7 Giúp TB k=1–7 Gây hại TB k=1–7\n"}
+,{"stream_name":"stdout","time":4423.601154088,"data":"                         ECBM 0.729 ± 0.014 0.838 ± 0.013 0.001 ± 0.002 0.002 ± 0.005 0.729 ± 0.016 0.840 ± 0.014 0.003 ± 0.003    0.004 ± 0.009\n"}
+,{"stream_name":"stdout","time":4423.601157791,"data":"ECBM (can thiệp theo tác giả) 0.756 ± 0.011 0.854 ± 0.012 0.090 ± 0.019 0.069 ± 0.016 0.817 ± 0.012 0.917 ± 0.005 0.118 ± 0.019    0.077 ± 0.014\n"}
+,{"stream_name":"stdout","time":4423.601174404,"data":"                      GA-ECBM 0.765 ± 0.024 0.869 ± 0.019 0.045 ± 0.013 0.019 ± 0.007 0.849 ± 0.011 0.934 ± 0.007 0.082 ± 0.014    0.028 ± 0.009\n"}
+,{"stream_name":"stdout","time":4423.601191552,"data":"\n"}
+,{"stream_name":"stdout","time":4423.601195349,"data":"DeLong ghép cặp trên test (D so với A):\n"}
+,{"stream_name":"stdout","time":4423.601198998,"data":"  seed 42: AUC 0.8568 → 0.8283 (Δ -0.0285), p = 0.0962\n"}
+,{"stream_name":"stdout","time":4423.601202685,"data":"  seed 123: AUC 0.8283 → 0.8338 (Δ +0.0055), p = 0.7888\n"}
+,{"stream_name":"stdout","time":4423.601206322,"data":"  seed 2026: AUC 0.8472 → 0.8621 (Δ +0.0150), p = 0.4589\n"}
+,{"stream_name":"stdout","time":4423.601209808,"data":"  seed 11: AUC 0.8327 → 0.8395 (Δ +0.0068), p = 0.7750\n"}
+,{"stream_name":"stdout","time":4423.601213351,"data":"  seed 222: AUC 0.8262 → 0.8584 (Δ +0.0322), p = 0.1028\n"}
+,{"stream_name":"stdout","time":4423.601217038,"data":"  seed 3333: AUC 0.8321 → 0.8108 (Δ -0.0213), p = 0.3727\n"}
+,{"stream_name":"stdout","time":4423.601224541,"data":"\n"}
+,{"stream_name":"stdout","time":4423.601226956,"data":"T-test ghép cặp theo seed (val):\n"}
+,{"stream_name":"stdout","time":4423.601229413,"data":"  Δroc_auc: +0.0258 | tăng ở 5/6 seed | p = 0.04512187833638286\n"}
+,{"stream_name":"stdout","time":4423.601231897,"data":"  Δf1_macro: +0.0142 | tăng ở 5/6 seed | p = 0.027670493341150355\n"}
+,{"stream_name":"stdout","time":4423.60123479,"data":"  Δbalanced_accuracy: +0.0191 | tăng ở 5/6 seed | p = 0.06157787416754283\n"}
+,{"stream_name":"stdout","time":4423.601237246,"data":"  Δconcept_accuracy: -0.0129 | tăng ở 3/6 seed | p = 0.29939331261225477\n"}
+,{"stream_name":"stdout","time":4423.601239624,"data":"  Δconcept_f1_macro: +0.0016 | tăng ở 4/6 seed | p = 0.9639780971665044\n"}
+,{"stream_name":"stdout","time":4423.6012421,"data":"  Δf1_k1_3: +0.0402 | tăng ở 6/6 seed | p = 0.0037924500750105223\n"}
+,{"stream_name":"stdout","time":4423.601244576,"data":"  Δharm_k1_3: +0.0188 | tăng ở 6/6 seed | p = 0.01552430606823876\n"}
+,{"stream_name":"stdout","time":4423.601246948,"data":"  Δauc_k7: +0.1269 | tăng ở 6/6 seed | p = 2.9577322609123445e-05\n"}
+,{"stream_name":"stdout","time":4423.601249464,"data":"\n"}
+,{"stream_name":"stdout","time":4423.601251676,"data":"T-test ghép cặp theo seed (test):\n"}
+,{"stream_name":"stdout","time":4423.601254031,"data":"  Δroc_auc: +0.0016 | tăng ở 4/6 seed | p = 0.8708870471160676\n"}
+,{"stream_name":"stdout","time":4423.601256526,"data":"  Δf1_macro: +0.0086 | tăng ở 4/6 seed | p = 0.5643007901048751\n"}
+,{"stream_name":"stdout","time":4423.601258895,"data":"  Δbalanced_accuracy: +0.0150 | tăng ở 4/6 seed | p = 0.2495571233762795\n"}
+,{"stream_name":"stdout","time":4423.601261692,"data":"  Δconcept_accuracy: -0.0139 | tăng ở 2/6 seed | p = 0.19121029338385143\n"}
+,{"stream_name":"stdout","time":4423.60127747,"data":"  Δconcept_f1_macro: -0.0001 | tăng ở 4/6 seed | p = 0.9974744302575648\n"}
+,{"stream_name":"stdout","time":4423.601281962,"data":"  Δf1_k1_3: +0.0366 | tăng ở 5/6 seed | p = 0.04163351106294691\n"}
+,{"stream_name":"stdout","time":4423.601286094,"data":"  Δharm_k1_3: +0.0166 | tăng ở 6/6 seed | p = 0.00982838304351288\n"}
+,{"stream_name":"stdout","time":4423.601289968,"data":"  Δauc_k7: +0.0942 | tăng ở 6/6 seed | p = 1.3712406698896235e-05\n"}
+,{"stream_name":"stdout","time":4423.601294452,"data":"\n"}
+,{"stream_name":"stdout","time":4423.60129775,"data":"T-test ghép cặp theo seed (val), D so với ECBM can thiệp theo giao thức tác giả:\n"}
+,{"stream_name":"stdout","time":4423.60130259,"data":"  Δf1_k1_3: +0.0152 | D cao hơn ở 5/6 seed | p = 0.0867\n"}
+,{"stream_name":"stdout","time":4423.601310272,"data":"  Δauc_k1_3: +0.0279 | D cao hơn ở 6/6 seed | p = 0.0049\n"}
+,{"stream_name":"stdout","time":4423.601313928,"data":"  Δhelp_k1_3: -0.0448 | D cao hơn ở 0/6 seed | p = 0.0047\n"}
+,{"stream_name":"stdout","time":4423.601317566,"data":"  Δharm_k1_3: -0.0509 | D cao hơn ở 0/6 seed | p = 0.0003\n"}
+,{"stream_name":"stdout","time":4423.60132115,"data":"  Δf1_k7: +0.0177 | D cao hơn ở 5/6 seed | p = 0.0457\n"}
+,{"stream_name":"stdout","time":4423.60132466,"data":"  Δauc_k7: +0.0084 | D cao hơn ở 5/6 seed | p = 0.0253\n"}
+,{"stream_name":"stdout","time":4423.601328104,"data":"  Δhelp_all: -0.0404 | D cao hơn ở 0/6 seed | p = 0.0039\n"}
+,{"stream_name":"stdout","time":4423.601331655,"data":"  Δharm_all: -0.0468 | D cao hơn ở 0/6 seed | p = 0.0004\n"}
+,{"stream_name":"stdout","time":4423.601335334,"data":"\n"}
+,{"stream_name":"stdout","time":4423.601338614,"data":"T-test ghép cặp theo seed (test), D so với ECBM can thiệp theo giao thức tác giả:\n"}
+,{"stream_name":"stdout","time":4423.601355858,"data":"  Δf1_k1_3: +0.0089 | D cao hơn ở 4/6 seed | p = 0.3950\n"}
+,{"stream_name":"stdout","time":4423.60136047,"data":"  Δauc_k1_3: +0.0146 | D cao hơn ở 4/6 seed | p = 0.2487\n"}
+,{"stream_name":"stdout","time":4423.601364743,"data":"  Δhelp_k1_3: -0.0446 | D cao hơn ở 0/6 seed | p = 0.0051\n"}
+,{"stream_name":"stdout","time":4423.60136884,"data":"  Δharm_k1_3: -0.0497 | D cao hơn ở 0/6 seed | p = 0.0003\n"}
+,{"stream_name":"stdout","time":4423.601372956,"data":"  Δf1_k7: +0.0321 | D cao hơn ở 6/6 seed | p = 0.0083\n"}
+,{"stream_name":"stdout","time":4423.60137624,"data":"  Δauc_k7: +0.0172 | D cao hơn ở 6/6 seed | p = 0.0021\n"}
+,{"stream_name":"stdout","time":4423.60138713,"data":"  Δhelp_all: -0.0365 | D cao hơn ở 0/6 seed | p = 0.0222\n"}
+,{"stream_name":"stdout","time":4423.601391088,"data":"  Δharm_all: -0.0489 | D cao hơn ở 0/6 seed | p = 0.0006\n"}
+,{"stream_name":"stdout","time":4424.719416533,"data":"\n"}
+,{"stream_name":"stdout","time":4424.719469293,"data":"Kiểm tra bảng trọng số checklist: điểm tính từ concept khớp cột seven_point_score ở 100.0% ca validation\n"}
+,{"stream_name":"stdout","time":4424.71947716,"data":"Tương quan Spearman giữa Δθ (melanoma − lành) và trọng số checklist 7 điểm: ρ = 0.663, p = 0.0011\n"}
+,{"stream_name":"stdout","time":4424.973337206,"data":"\n"}
+,{"stream_name":"stdout","time":4424.973379623,"data":"Đã lưu /kaggle/working/ecbm_derm7pt_paper | file: ['bang1_test.csv', 'bang1_val.csv', 'bang2_test.csv', 'bang2_val.csv', 'intervention_curves_test.png', 'per_case_seed11.npz', 'per_case_seed123.npz', 'per_case_seed2026.npz', 'per_case_seed222.npz', 'per_case_seed3333.npz', 'per_case_seed42.npz', 'runs.json', 'summary.json', 'theta_vs_seven_point.png']\n"}
+,{"stream_name":"stderr","time":4430.585374807,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":4430.585427384,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":4430.763314465,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":4430.763360156,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":4431.624356543,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":4431.72175713,"data":"[NbConvertApp] Writing 331379 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":4434.33806132,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":4435.185722797,"data":"[NbConvertApp] Support files will be in __results___files/\n"}
+,{"stream_name":"stderr","time":4435.185768392,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":4435.186124091,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":4435.186446326,"data":"[NbConvertApp] Writing 595887 bytes to __results__.html\n"}
+]

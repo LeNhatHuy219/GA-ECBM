@@ -1,0 +1,66 @@
+diff --git a/configs/cub.json b/configs/cub.json
+index c038937..420487d 100644
+--- a/configs/cub.json
++++ b/configs/cub.json
+@@ -22,7 +22,7 @@
+   "sweep": false,
+   "optim": "sgd",
+   "learning_rate": 0.01,
+-  "epochs": 300,
++  "epochs": 100,
+   "batch_size": 64,
+   "lr_c":1e-1,
+   "lr_y":1e-1,
+@@ -46,7 +46,7 @@
+   "ipus": null,
+   "log_gpu_memory": null,
+   "progress_bar_refresh_rate": null,
+-  "enable_progress_bar": true,
++  "enable_progress_bar": false,
+   "overfit_batches": 0.0,
+   "track_grad_norm": -1,
+   "check_val_every_n_epoch": 1,
+diff --git a/data/data_util.py b/data/data_util.py
+index 5dc7c90..1fa6cf4 100644
+--- a/data/data_util.py
++++ b/data/data_util.py
+@@ -5,7 +5,7 @@ import os
+ # CUB_DATA_DIR = "YOUR/CUB/DATA/DIR"
+ # AWA2_DATA_DIR = "YOUR/AWA2/DATA/DIR"
+ # CELEBA_DATA_DIR = "YOUR/CELEBA/DATA/DIR"
+-CUB_DATA_DIR = "/home/xxucb/data/pcbm_dataset/CUB"
++CUB_DATA_DIR = os.environ.get("CUB_DATA_DIR", "/home/xxucb/data/pcbm_dataset/CUB")
+ AWA2_DATA_DIR='/home/xxucb/data/pcbm_dataset/Animals_with_Attributes2'
+ CELEBA_DATA_DIR = "/home/xxucb/data/pcbm_dataset/celeba"
+ def get_dataset(args):
+diff --git a/main.py b/main.py
+index 9686e0b..9437f1d 100644
+--- a/main.py
++++ b/main.py
+@@ -1,7 +1,7 @@
+ import os
+ os.environ["CUDA_VISIBLE_DEVICES"]="0"
+ 
+-from LitModel import LitModel
++from ga_litmodel import GALitModel as LitModel
+ from pytorch_lightning import Trainer,seed_everything
+ from pytorch_lightning.callbacks import ModelCheckpoint
+ from pytorch_lightning.callbacks.early_stopping import EarlyStopping
+@@ -56,7 +56,7 @@ args=Namespace(**args)
+ 
+ if __name__ == '__main__':
+ 
+-    torch.use_deterministic_algorithms(True)
++    torch.use_deterministic_algorithms(True, warn_only=True)
+     seed_everything(args.random_seed, workers=True)
+     uuid = time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime())
+     exp_dir = os.path.join("./exp", uuid)
+@@ -81,4 +81,5 @@ if __name__ == '__main__':
+     # wandb_logger.watch(model,log_graph=False)
+     trainer.fit(model,train_dataloaders=train_loader, val_dataloaders=val_loader)
+     model.freeze()
+-    trainer.test(model=model,ckpt_path=None,dataloaders=test_loader)
+\ No newline at end of file
++    if os.environ.get('ECBM_RUN_TEST') == '1':
++        trainer.test(model=model,ckpt_path=None,dataloaders=test_loader)
+\ No newline at end of file
