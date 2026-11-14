@@ -129,6 +129,14 @@ GA-ECBM was higher in every seed, but no difference is significant after Holm co
 Verifying 10% of the concept groups lowered ECBM's accuracy (0.738 → 0.709) and turned 6.1% of the images from correct
 to wrong. GA-ECBM's accuracy rose with every level in every seed, and its harm never exceeded 0.12%.
 
+<p align="center">
+<img src="figures/cub_concepts_test.png" alt="CUB concepts during intervention" width="70%"/>
+</p>
+
+ECBM's official procedure leaves the concepts that were not verified unchanged, so their accuracy stayed near 0.960.
+GA-ECBM re-estimates them from the updated label posterior: their accuracy rose from 0.965 to at most 0.972, and its
+overall concept accuracy was higher at every level below 100% in every seed.
+
 ### Derm7pt
 
 **Without intervention** (test set, mean ± s.d. over six seeds; *p*: paired *t*-test over seeds)
@@ -195,7 +203,7 @@ derm7pt/
   analysis/                        statistics, interpolation analysis, label re-attachment
 scripts/                           CUB aggregation and figures
 results/                           metrics, intervention curves, per-case predictions and logs of our runs
-figures/                           figures of the paper
+figures/                           figures of the paper and the interpolation trade-off (Sect. 5.3)
 ```
 
 The notebooks are the exact versions we ran, saved with the outputs of those Kaggle runs (printed metrics and

@@ -166,43 +166,32 @@ finish_figure(fig, axes[0], 2, 3)
 fig.savefig(OUT / f"cub_intervention_{CUB_SPLIT}.pdf"); fig.savefig(OUT / f"cub_intervention_{CUB_SPLIT}.png", dpi=200); plt.close(fig)
 print("saved to", OUT)
 
-# ---------- CUB: concepts after partial intervention ----------
-# These are saved aggregate means, not extra runs or reconstructed error bars.
+# ---------- CUB: concepts during intervention ----------
+# (a) accuracy of the concepts not yet verified (all concepts at 0%; none remain at 100%), (b) overall concept accuracy.
 fig, axes = plt.subplots(1, 2, figsize=(W, H3))
-concept_source = {}
+audit["CUB_concepts"] = {}
 for key, label, color in (("A0", "ECBM (official)", AQUA), ("D", "GA-ECBM", ORANGE)):
-    rows = CS[0][f"{key}_{CUB_SPLIT}"]["curve"]          # first seed only (figure not used in the paper)
-    concept_source[key] = []
-    unverified_x, unverified_y = [], []
-    for row in rows:
-        ratio = row["ratio"]
-        if ratio == 0:
-            value = row["concept_accuracy"]
-        elif ratio < 1:
-            value = row["unverified_concept_accuracy"]
-        else:
-            value = None  # no unverified concepts at full intervention
-        concept_source[key].append({"ratio":ratio,"unverified_concept_accuracy":value,
-                                    "overall_concept_accuracy":row["overall_concept_accuracy"]})
-        if value is not None:
-            unverified_x.append(100 * ratio); unverified_y.append(value)
-    axes[0].plot(unverified_x, unverified_y, color=color, lw=1.6, **curve_style(key), ms=3.5,
-                 mec="white", mew=.5, label=label)
-    axes[1].plot([r["ratio"]*100 for r in rows], [r["overall_concept_accuracy"] for r in rows],
-                 color=color, lw=1.6, **curve_style(key), ms=3.5, mec="white", mew=.5, label=label)
+    curves = [C[f"{key}_{CUB_SPLIT}"]["curve"] for C in CS]
+    x = np.array([c["ratio"] * 100 for c in curves[0]])
+    unverified = np.array([[r["concept_accuracy"] if r["ratio"] == 0 else
+                            (r["unverified_concept_accuracy"] if r["ratio"] < 1 else np.nan) for r in cv] for cv in curves])
+    overall = np.array([[r["overall_concept_accuracy"] for r in cv] for cv in curves])
+    audit["CUB_concepts"][key] = {"ratio": x.tolist(),
+                                  "unverified_per_seed": [[None if np.isnan(u) else u for u in row] for row in unverified.tolist()],
+                                  "overall_per_seed": overall.tolist()}
+    for ax, v in ((axes[0], unverified), (axes[1], overall)):
+        keep = ~np.isnan(v[0])
+        mu = v[:, keep].mean(0)
+        if len(CS) > 1:
+            sd = v[:, keep].std(0, ddof=1)
+            ax.fill_between(x[keep], mu - sd, mu + sd, color=color, alpha=0.14, lw=0)
+        ax.plot(x[keep], mu, color=color, lw=1.6, **curve_style(key), ms=3.5, mec="white", mew=0.5, label=label)
 for ax, title in zip(axes, ("(a) Unverified concept accuracy", "(b) Overall concept accuracy")):
-    intervention_axis(ax, title); ax.set_ylabel("Accuracy")
-axes[0].set_ylim(.945,.98)
-axes[0].set_yticks([.95,.96,.97,.98]);axes[1].set_ylim(0,1.02)
-axes[1].set_yticks([0,.25,.5,.75,1.])
+    intervention_axis(ax, title)
+axes[0].set_ylim(0.945, 0.98); axes[0].set_yticks([0.95, 0.96, 0.97, 0.98])
+axes[1].set_ylim(0.5, 1.02); axes[1].set_yticks([0.5, 0.6, 0.7, 0.8, 0.9, 1.0])
 finish_figure(fig, axes[0], 2, 2)
-fig.savefig(OUT/f"cub_concept_propagation_{CUB_SPLIT}.pdf")
-fig.savefig(OUT/f"cub_concept_propagation_{CUB_SPLIT}.png",dpi=220)
-plt.close(fig)
-(OUT/f"cub_concept_propagation_{CUB_SPLIT}.json").write_text(json.dumps({
-    "source":str(CUB_FILES[0]),"split":CUB_SPLIT,"training_seeds":1,
-    "intermediate_subset_repeats":5,"full_verification_unverified_metric":None,
-    "curves":concept_source},indent=2)+"\n")
+fig.savefig(OUT / f"cub_concepts_{CUB_SPLIT}.pdf"); fig.savefig(OUT / f"cub_concepts_{CUB_SPLIT}.png", dpi=200); plt.close(fig)
 audit["theta"] = {"labels": labels, "evidence": dtheta, "checklist_weights": weights,
                   "rho": float(rho.correlation), "p": float(rho.pvalue)}
 (OUT/"figure_data_audit.json").write_text(json.dumps(audit, indent=2)+"\n")
