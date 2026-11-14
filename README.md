@@ -104,15 +104,23 @@ FIG_WIDTH_IN=4.8 python scripts/make_mix_figure.py results/derm7pt/analysis/mix_
 
 ### CUB-200-2011
 
-| Model | Class | Concept | Overall concept | Intervention AUC | Harm (%) |
+| Model | Class acc. | Concept acc. | Overall concept acc. | Intervention AUC | Harm (%) |
 |---|---|---|---|---|---|
-| ECBM, published (5 seeds, 300 epochs) | 0.812 ± 0.006 | 0.973 ± 0.001 | 0.713 ± 0.009 | – | – |
-| ECBM, our run (3 seeds, 100 epochs) | 0.738 ± 0.025 | 0.960 ± 0.005 | 0.575 ± 0.029 | 0.844 ± 0.015 | 2.83 ± 0.21 |
-| GA-ECBM (3 seeds, 100 epochs) | 0.760 ± 0.003 | 0.965 ± 0.001 | 0.651 ± 0.006 | **0.886 ± 0.003** | **0.03 ± 0.01** |
+| *Published, test set (5 seeds, 300 epochs)* | | | | | |
+| ECBM | 0.812 ± 0.006 | 0.973 ± 0.001 | 0.713 ± 0.009 | – | – |
+| *Ours, validation set (3 seeds, 100 epochs)* | | | | | |
+| ECBM | 0.723 ± 0.012 | 0.958 ± 0.003 | 0.559 ± 0.013 | 0.838 ± 0.014 | 2.68 ± 0.14 |
+| GA-ECBM | 0.740 ± 0.006 | 0.963 ± 0.001 | 0.634 ± 0.008 | 0.876 ± 0.003 | 0.01 ± 0.01 |
+| *Ours, test set (3 seeds, 100 epochs)* | | | | | |
+| ECBM | 0.738 ± 0.025 | 0.960 ± 0.005 | 0.575 ± 0.029 | 0.844 ± 0.015 | 2.83 ± 0.21 |
+| GA-ECBM | 0.760 ± 0.003 | 0.965 ± 0.001 | 0.651 ± 0.006 | **0.886 ± 0.003** | **0.03 ± 0.01** |
+| *p*<sub>Holm</sub> (test) | 0.31 | 0.31 | 0.11 | 0.11 | 0.01 |
 
-Test set. Harm is the share of all images turned from correct to wrong by an intervention, averaged over 10–100% of the
-groups verified. Without intervention, GA-ECBM was higher in every seed, but no difference is significant after Holm
-correction over three seeds.
+Overall concept accuracy: all 112 concepts correct. Intervention AUC: normalized area under the class-accuracy curve
+from 0% to 100% of the 28 concept groups verified. Harm: share of all images turned from correct to wrong by an
+intervention, averaged over 10–100%. Mean ± s.d. over seeds; ECBM uses the official iterative intervention;
+*p*<sub>Holm</sub>: paired *t*-test over the three seeds, Holm-adjusted over the five columns. Without intervention,
+GA-ECBM was higher in every seed, but no difference is significant after Holm correction.
 
 <p align="center">
 <img src="figures/cub_intervention_test.png" alt="CUB intervention" width="85%"/>
@@ -123,15 +131,42 @@ to wrong. GA-ECBM's accuracy rose with every level in every seed, and its harm n
 
 ### Derm7pt
 
-| Procedure | ROC-AUC, no intervention | ROC-AUC, all 7 verified | Macro F1, all 7 verified | Help, 1–3 verified (%) | Harm, 1–3 verified (%) |
-|---|---|---|---|---|---|
-| ECBM (1:1:0.01) | 0.837 ± 0.012 | 0.840 ± 0.014 | 0.729 ± 0.016 | 0.1 ± 0.2 | 0.2 ± 0.5 |
-| ECBM (concept-only) | 0.837 ± 0.012 | 0.917 ± 0.005 | 0.817 ± 0.012 | 9.0 ± 1.9 | 6.9 ± 1.6 |
-| GA-ECBM | 0.839 ± 0.019 | **0.934 ± 0.007** | **0.849 ± 0.011** | 4.5 ± 1.3 | 1.9 ± 0.7 |
+**Without intervention** (test set, mean ± s.d. over six seeds; *p*: paired *t*-test over seeds)
 
-Test set, six seeds. The two ECBM rows share one model and differ in how a correction is propagated. ECBM (1:1:0.01)
-keeps all three energies with the weights used for prediction; ECBM (concept-only) predicts from the concepts alone after
-a correction, like the official second intervention round.
+| Metric | ECBM | GA-ECBM | *p* |
+|---|---|---|---|
+| Accuracy | 0.787 ± 0.018 | 0.790 ± 0.023 | 0.86 |
+| Balanced accuracy | 0.737 ± 0.017 | 0.752 ± 0.032 | 0.25 |
+| Macro F1 | 0.729 ± 0.015 | 0.738 ± 0.027 | 0.56 |
+| Sensitivity | 0.634 ± 0.055 | 0.673 ± 0.081 | 0.27 |
+| Specificity | 0.840 ± 0.037 | 0.830 ± 0.038 | 0.74 |
+| ROC-AUC | 0.837 ± 0.012 | 0.839 ± 0.019 | 0.87 |
+| Concept accuracy | 0.679 ± 0.010 | 0.665 ± 0.018 | 0.19 |
+| Concept macro F1 | 0.362 ± 0.036 | 0.362 ± 0.057 | 1.00 |
+| All seven concepts correct | 0.072 ± 0.010 | 0.081 ± 0.011 | 0.0501 |
+
+Melanoma is the positive class. Decision thresholds maximize validation macro F1 and are applied unchanged to the test
+set. No difference is significant; the test results show no detectable difference, not equivalence.
+
+**Under intervention** (test set, mean ± s.d. over six seeds)
+
+| Metric | ECBM (1:1:0.01) | ECBM (concept-only) | GA-ECBM | *p* | *p*<sub>Holm</sub> |
+|---|---|---|---|---|---|
+| Macro F1<sub>1–3</sub> | 0.729 ± 0.014 | 0.756 ± 0.011 | 0.765 ± 0.024 | 0.39 | 0.50 |
+| ROC-AUC<sub>1–3</sub> | 0.838 ± 0.013 | 0.854 ± 0.012 | 0.869 ± 0.019 | 0.25 | 0.50 |
+| Help<sub>1–3</sub> (%) | 0.1 ± 0.2 | 9.0 ± 1.9 | 4.5 ± 1.3 | 0.005 | 0.025 |
+| Harm<sub>1–3</sub> (%) | 0.2 ± 0.5 | 6.9 ± 1.6 | 1.9 ± 0.7 | 0.0003 | 0.003 |
+| Macro F1<sub>7</sub> | 0.729 ± 0.016 | 0.817 ± 0.012 | **0.849 ± 0.011** | 0.008 | 0.033 |
+| ROC-AUC<sub>7</sub> | 0.840 ± 0.014 | 0.917 ± 0.005 | **0.934 ± 0.007** | 0.002 | 0.013 |
+| Help<sub>1–7</sub> (%) | 0.3 ± 0.3 | 11.8 ± 1.9 | 8.2 ± 1.4 | 0.022 | 0.067 |
+| Harm<sub>1–7</sub> (%) | 0.4 ± 0.9 | 7.7 ± 1.4 | 2.8 ± 0.9 | 0.0006 | 0.005 |
+
+Subscripts: number of verified concepts (1–3: mean over k = 1, 2, 3; 1–7: mean over all k), averaging all subsets of
+each size. Help and harm: share of all test cases turned from wrong to correct and from correct to wrong. *p*: paired
+*t*-test over seeds, GA-ECBM versus ECBM (concept-only), raw and Holm-adjusted over the eight metrics. The two ECBM
+columns share one model and differ in how a correction is propagated: ECBM (1:1:0.01) keeps all three energies with the
+weights used for prediction; ECBM (concept-only) predicts from the concepts alone after a correction, like the official
+second intervention round.
 
 <p align="center">
 <img src="figures/derm7pt_intervention.png" alt="Derm7pt intervention" width="85%"/>
