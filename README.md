@@ -198,7 +198,8 @@ results/                           metrics, intervention curves, per-case predic
 figures/                           figures of the paper
 ```
 
-The notebooks are the exact versions we ran; their comments are in Vietnamese, and
+The notebooks are the exact versions we ran, saved with the outputs of those Kaggle runs (printed metrics and
+plots); their comments are in Vietnamese, and
 [`cub/README.md`](cub/README.md) and [`derm7pt/README.md`](derm7pt/README.md) describe each section in English. The
 Derm7pt per-case predictions in `results/derm7pt/per_case/` contain model outputs only;
 `derm7pt/analysis/attach_labels.py` adds the labels from your copy of the dataset. Model checkpoints are not included.
