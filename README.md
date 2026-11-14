@@ -205,14 +205,7 @@ Derm7pt per-case predictions in `results/derm7pt/per_case/` contain model output
 
 ## Reference
 
-```bib
-@misc{GAECBM,
-      title={GA-ECBM: Gated Additive Energy-Based Concept Bottleneck Models for Reliable Concept Interventions},
-      author={Nhat-Le, Huy and Tran-Duong, Khanh Quoc},
-      year={2026},
-      note={Under submission}
-}
-```
+The BibTeX entry will be added once the author list and the publication are final.
 
 ## Acknowledgement
 
