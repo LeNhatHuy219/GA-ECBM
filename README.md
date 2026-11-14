@@ -203,10 +203,6 @@ The notebooks are the exact versions we ran; their comments are in Vietnamese, a
 Derm7pt per-case predictions in `results/derm7pt/per_case/` contain model outputs only;
 `derm7pt/analysis/attach_labels.py` adds the labels from your copy of the dataset. Model checkpoints are not included.
 
-## Reference
-
-The BibTeX entry will be added once the author list and the publication are final.
-
 ## Acknowledgement
 
 This code builds on the official [ECBM](https://github.com/xmed-lab/ECBM) implementation (MIT License) and the CUB
